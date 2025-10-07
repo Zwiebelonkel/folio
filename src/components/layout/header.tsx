@@ -1,7 +1,7 @@
 
 "use client";
 
-import { Atom } from 'lucide-react';
+import Image from 'next/image';
 
 export function Header() {
   const scrollToTop = () => {
@@ -19,7 +19,13 @@ export function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-start">
           <div className="flex items-center gap-3">
-            <Atom className="h-8 w-8 text-primary" />
+            <Image 
+              src="/LM.png" 
+              alt="LM Logo"
+              width={32} 
+              height={32} 
+              className="h-8 w-8"
+            />
             <h1 className="text-2xl font-bold tracking-tight text-foreground font-headline">
               Luca Müller
             </h1>
