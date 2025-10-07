@@ -27,13 +27,13 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
     const x = e.clientX - left;
     const y = e.clientY - top;
     
-    const rotateX = (y - height / 2) / (height / 2) * -10;
-    const rotateY = (x - width / 2) / (width / 2) * 10;
+    const rotateX = (y - height / 2) / (height / 2) * -5;
+    const rotateY = (x - width / 2) / (width / 2) * 5;
 
     setStyle({
       '--x': `${x}px`,
       '--y': `${y}px`,
-      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`,
+      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`,
     });
   };
 
