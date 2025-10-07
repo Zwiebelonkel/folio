@@ -23,7 +23,6 @@ interface ItemPreviewDialogProps {
 export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialogProps) {
   if (!item) return null;
 
-  const isInteractive = (item.category === 'game' || item.category === 'website') && item.url;
   const hasLink = !!item.url;
 
   return (
@@ -52,22 +51,13 @@ export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialo
             </div>
           </div>
           <div className="relative aspect-video bg-muted h-full">
-            {isInteractive ? (
-              <iframe
-                src={item.url}
-                title={item.title}
-                className="w-full h-full border-0 md:rounded-r-lg"
-                sandbox="allow-scripts allow-same-origin"
-              />
-            ) : (
-              <Image
-                src={item.imageUrl}
-                alt={item.title}
-                fill
-                className="object-cover md:rounded-r-lg"
-                data-ai-hint={item.imageHint}
-              />
-            )}
+            <Image
+              src={item.imageUrl}
+              alt={item.title}
+              fill
+              className="object-cover md:rounded-r-lg"
+              data-ai-hint={item.imageHint}
+            />
           </div>
         </div>
       </DialogContent>
