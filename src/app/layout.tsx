@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: 'Luca Müller',
-  description: 'A unified portfolio for all your creative work.',
+  description: 'Portfolio of Luca Müller.',
 };
 
 export default function RootLayout({
