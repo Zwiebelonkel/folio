@@ -14,6 +14,15 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Link as LinkIcon } from 'lucide-react';
 
+// Add this for model-viewer custom element
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'model-viewer': any;
+    }
+  }
+}
+
 interface ItemPreviewDialogProps {
   item: PortfolioItem | null;
   open: boolean;
@@ -24,6 +33,7 @@ export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialo
   if (!item) return null;
 
   const hasLink = !!item.url;
+  const is3d = item.category === '3d' && hasLink;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -43,21 +53,37 @@ export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialo
                   <Button asChild>
                     <a href={item.url} target="_blank" rel="noopener noreferrer">
                       <LinkIcon className="mr-2 h-4 w-4" />
-                      Visit Link
+                      {is3d ? 'View on Sketchfab' : 'Visit Link'}
                     </a>
                   </Button>
                 </div>
               )}
             </div>
           </div>
-          <div className="relative aspect-video bg-muted h-full">
-            <Image
-              src={item.imageUrl}
-              alt={item.title}
-              fill
-              className="object-cover md:rounded-r-lg"
-              data-ai-hint={item.imageHint}
-            />
+          <div className="relative bg-muted min-h-[400px] md:min-h-0 md:h-full">
+            {is3d ? (
+              <model-viewer
+                  src={item.url}
+                  alt={item.title}
+                  ar
+                  ar-modes="webxr scene-viewer quick-look"
+                  camera-controls
+                  auto-rotate
+                  poster={item.imageUrl}
+                  shadow-intensity="1"
+                  style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
+                  className="md:rounded-r-lg"
+              >
+              </model-viewer>
+            ) : (
+              <Image
+                src={item.imageUrl}
+                alt={item.title}
+                fill
+                className="object-cover md:rounded-r-lg"
+                data-ai-hint={item.imageHint}
+              />
+            )}
           </div>
         </div>
       </DialogContent>

@@ -1,13 +1,4 @@
 import type { PortfolioItem } from './types';
-import { PlaceHolderImages } from './placeholder-images';
-
-const getImage = (id: string) => {
-  const image = PlaceHolderImages.find(img => img.id === id);
-  if (!image) {
-    return { imageUrl: "https://picsum.photos/seed/fallback/600/400", imageHint: "placeholder image" };
-  }
-  return { imageUrl: image.imageUrl, imageHint: image.imageHint };
-};
 
 export const portfolioItems: PortfolioItem[] = [
   // Websites
@@ -132,7 +123,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: '3d',
     imageUrl: '/images/glasses.png',
     imageHint: 'Orange glasses',
-    url: 'https://skfb.ly/pBxoG',
+    url: '/models/brille.glb'
   },
   {
     id: 'd2',
@@ -141,7 +132,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: '3d',
     imageUrl: '/images/buro.png',
     imageHint: 'Office Assets',
-    url: 'https://skfb.ly/pBv87',
+    url: '/models/office.glb'
   },
   {
     id: 'd3',
@@ -150,7 +141,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: '3d',
     imageUrl: '/images/redSmoke.png',
     imageHint: 'Cigarettes',
-    url: 'https://skfb.ly/pB9Mr',
+    url: '/models/cigs.glb'
   },
 
   // Links
@@ -237,4 +228,3 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://youtu.be/4Yg9T_xH1KQ',
   },
 ];
-
