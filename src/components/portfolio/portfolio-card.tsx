@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { PortfolioItem } from '@/lib/types';
@@ -32,7 +33,7 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
   return (
     <Card 
       onClick={() => onCardClick(item)}
-      className="overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1.5 cursor-pointer bg-card"
+      className="overflow-hidden flex flex-col group transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2 cursor-pointer bg-card"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
