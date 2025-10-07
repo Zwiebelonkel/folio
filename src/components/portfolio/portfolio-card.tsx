@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Eye, Link as LinkIcon, Play, Pause, Video } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import React, { useRef, useState } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface PortfolioCardProps {
   item: PortfolioItem;
@@ -17,9 +18,10 @@ interface PortfolioCardProps {
 export function PortfolioCard({ item, onCardClick, isPlaying = false }: PortfolioCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [style, setStyle] = useState({});
+  const isMobile = useIsMobile();
 
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (isMobile || !cardRef.current) return;
 
     const { left, top, width, height } = cardRef.current.getBoundingClientRect();
     const x = e.clientX - left;
@@ -36,6 +38,7 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
   };
 
   const onMouseLeave = () => {
+    if (isMobile) return;
     setStyle({
       transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
     });
