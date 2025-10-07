@@ -50,6 +50,14 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://github.com',
   },
   {
+    id: '12',
+    title: 'Daydream',
+    description: 'A short, ethereal film about lucid dreaming.',
+    category: 'video',
+    ...getImage('video-1'),
+    url: 'about:blank'
+  },
+  {
     id: '6',
     title: 'Elder Scrolls V: Skyrim',
     description: 'A dark fantasy game concept with a focus on immersive storytelling.',
@@ -71,6 +79,14 @@ export const portfolioItems: PortfolioItem[] = [
     description: 'An architectural visualization of a modern glass house in a forest.',
     category: '3d',
     ...getImage('3d-2'),
+  },
+  {
+    id: '13',
+    title: 'City Lights',
+    description: 'A music video for a local indie band, capturing the energy of the city at night.',
+    category: 'video',
+    ...getImage('video-2'),
+    url: 'about:blank'
   },
   {
     id: '9',

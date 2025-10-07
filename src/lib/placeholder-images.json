@@ -65,6 +65,18 @@
       "description": "Professional portfolio",
       "imageUrl": "https://picsum.photos/seed/link2/600/400",
       "imageHint": "portfolio"
+    },
+    {
+      "id": "video-1",
+      "description": "Still frame from a short film",
+      "imageUrl": "https://picsum.photos/seed/video1/600/400",
+      "imageHint": "film still"
+    },
+    {
+      "id": "video-2",
+      "description": "Still frame from a music video",
+      "imageUrl": "https://images.unsplash.com/photo-1485846234645-a62644f84728?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtdXNpYyUyMHZpZGVvfGVufDB8fHx8MTc1OTc2ODE0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "music video"
     }
   ]
 }

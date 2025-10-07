@@ -1,4 +1,4 @@
-export type Category = 'game' | 'website' | '3d' | 'music' | 'link';
+export type Category = 'game' | 'website' | '3d' | 'music' | 'link' | 'video';
 
 export interface PortfolioItem {
   id: string;

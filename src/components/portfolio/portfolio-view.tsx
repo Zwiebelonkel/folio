@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { PortfolioCard } from './portfolio-card';
 import { ItemPreviewDialog } from './item-preview-dialog';
 import { useMusicPlayer } from '@/components/contexts/music-player-context';
-import { LayoutGrid, Gamepad2, Globe, Box, Music, Link as LinkIcon } from 'lucide-react';
+import { LayoutGrid, Gamepad2, Globe, Box, Music, Link as LinkIcon, Video } from 'lucide-react';
 
 const categories: { name: string; value: Category | 'all'; icon: React.ElementType }[] = [
   { name: 'All', value: 'all', icon: LayoutGrid },
@@ -14,6 +14,7 @@ const categories: { name: string; value: Category | 'all'; icon: React.ElementTy
   { name: 'Websites', value: 'website', icon: Globe },
   { name: '3D', value: '3d', icon: Box },
   { name: 'Music', value: 'music', icon: Music },
+  { name: 'Videos', value: 'video', icon: Video },
   { name: 'Links', value: 'link', icon: LinkIcon },
 ];
 

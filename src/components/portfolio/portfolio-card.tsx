@@ -4,7 +4,7 @@ import type { PortfolioItem } from '@/lib/types';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Eye, Link as LinkIcon, Play, Pause } from 'lucide-react';
+import { Eye, Link as LinkIcon, Play, Pause, Video } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 interface PortfolioCardProps {
@@ -20,6 +20,8 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
         return isPlaying ? { text: 'Pause', icon: Pause } : { text: 'Play', icon: Play };
       case 'link':
         return { text: 'Visit', icon: LinkIcon };
+      case 'video':
+        return { text: 'Watch', icon: Video };
       default:
         return { text: 'Preview', icon: Eye };
     }
@@ -49,7 +51,7 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
           <h3 className="text-lg font-bold font-headline group-hover:text-primary transition-colors">{item.title}</h3>
           <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{item.description}</p>
         </div>
-        <Button onClick={(e) => {e.stopPropagation(); onCardClick(item)}} className="w-full mt-4" variant={isPlaying ? 'default' : 'secondary'}>
+        <Button onClick={(e) => {e.stopPropagation(); onCardClick(item)}} className="w-full mt-4" variant={isPlaying && item.category === 'music' ? 'default' : 'secondary'}>
           <Icon className="mr-2 h-4 w-4" />
           {text}
         </Button>
