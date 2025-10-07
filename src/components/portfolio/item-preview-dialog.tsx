@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { PortfolioItem } from '@/lib/types';
@@ -10,6 +11,8 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Link as LinkIcon } from 'lucide-react';
 
 interface ItemPreviewDialogProps {
   item: PortfolioItem | null;
@@ -21,6 +24,7 @@ export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialo
   if (!item) return null;
 
   const isInteractive = (item.category === 'game' || item.category === 'website') && item.url;
+  const hasLink = !!item.url;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -31,8 +35,20 @@ export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialo
               <DialogTitle className="text-2xl font-bold font-headline">{item.title}</DialogTitle>
               <DialogDescription className="text-base pt-2 text-muted-foreground">{item.description}</DialogDescription>
             </DialogHeader>
-            <div className="mt-4">
-              <Badge variant="outline" className="capitalize">{item.category}</Badge>
+            <div className="flex-1 flex flex-col justify-between">
+              <div className="mt-4">
+                <Badge variant="outline" className="capitalize">{item.category}</Badge>
+              </div>
+              {hasLink && (
+                <div className="mt-6">
+                  <Button asChild>
+                    <a href={item.url} target="_blank" rel="noopener noreferrer">
+                      <LinkIcon className="mr-2 h-4 w-4" />
+                      Visit Link
+                    </a>
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
           <div className="relative aspect-video bg-muted h-full">
