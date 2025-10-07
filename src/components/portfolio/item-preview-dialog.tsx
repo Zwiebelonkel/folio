@@ -13,6 +13,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Link as LinkIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 // Add this for model-viewer custom element
 declare global {
@@ -32,8 +33,9 @@ interface ItemPreviewDialogProps {
 export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialogProps) {
   if (!item) return null;
 
-  const hasLink = !!item.url;
-  const is3d = item.category === '3d' && hasLink;
+  const is3d = item.category === '3d' && !!item.url;
+  const isExternalLink = !!item.url && item.url.startsWith('http');
+  const isSketchfab3d = is3d && isExternalLink;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -48,19 +50,22 @@ export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialo
               <div className="mt-4">
                 <Badge variant="outline" className="capitalize">{item.category}</Badge>
               </div>
-              {hasLink && (
+              {isExternalLink && (
                 <div className="mt-6">
                   <Button asChild>
                     <a href={item.url} target="_blank" rel="noopener noreferrer">
                       <LinkIcon className="mr-2 h-4 w-4" />
-                      {is3d ? 'View on Sketchfab' : 'Visit Link'}
+                      {isSketchfab3d ? 'View on Sketchfab' : 'Visit Link'}
                     </a>
                   </Button>
                 </div>
               )}
             </div>
           </div>
-          <div className="relative bg-muted min-h-[400px] md:min-h-0 md:h-full">
+          <div className={cn(
+            "relative bg-muted md:h-full",
+            is3d ? "min-h-[400px] md:min-h-0" : "aspect-video"
+          )}>
             {is3d ? (
               <model-viewer
                   src={item.url}
