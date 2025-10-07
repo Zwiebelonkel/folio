@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { PortfolioItem, Category } from '@/lib/types';
@@ -57,7 +58,10 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+      <div 
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8"
+        style={{ perspective: '2000px' }}
+      >
         {filteredItems.map(item => (
           <PortfolioCard
             key={item.id}

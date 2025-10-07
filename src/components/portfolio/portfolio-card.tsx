@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Eye, Link as LinkIcon, Play, Pause, Video } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import React, { useRef, useState } from 'react';
 
 interface PortfolioCardProps {
   item: PortfolioItem;
@@ -14,6 +15,33 @@ interface PortfolioCardProps {
 }
 
 export function PortfolioCard({ item, onCardClick, isPlaying = false }: PortfolioCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [style, setStyle] = useState({});
+
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+
+    const { left, top, width, height } = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - left;
+    const y = e.clientY - top;
+    
+    const rotateX = (y - height / 2) / (height / 2) * -10;
+    const rotateY = (x - width / 2) / (width / 2) * 10;
+
+    setStyle({
+      '--x': `${x}px`,
+      '--y': `${y}px`,
+      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`,
+    });
+  };
+
+  const onMouseLeave = () => {
+    setStyle({
+      transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+    });
+  };
+
+
   const getAction = () => {
     switch (item.category) {
       case 'music':
@@ -31,10 +59,15 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
 
   return (
     <Card 
+      ref={cardRef}
       onClick={() => onCardClick(item)}
-      className="overflow-hidden flex flex-col group transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2 cursor-pointer bg-card"
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      style={style as React.CSSProperties}
+      className="overflow-hidden flex flex-col group transition-all duration-200 ease-out shadow-lg hover:shadow-2xl hover:shadow-primary/30 cursor-pointer bg-card interactive-card"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
+        <div className="shine-effect" />
         <img
           src={item.imageUrl as string}
           alt={item.title}
