@@ -29,7 +29,7 @@ export function Header() {
           </div>
           <div className="flex items-center">
             <Image
-              src="/images/profile2.png"
+              src="/images/profile.png"
               alt="Luca Müller"
               width={40}
               height={40}
