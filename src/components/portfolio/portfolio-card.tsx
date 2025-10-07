@@ -2,7 +2,6 @@
 "use client";
 
 import type { PortfolioItem } from '@/lib/types';
-import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Eye, Link as LinkIcon, Play, Pause, Video } from 'lucide-react';
@@ -36,12 +35,10 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
       className="overflow-hidden flex flex-col group transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2 cursor-pointer bg-card"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
-        <Image
-          src={item.imageUrl}
+        <img
+          src={item.imageUrl as string}
           alt={item.title}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+          className="object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-105"
           data-ai-hint={item.imageHint}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
