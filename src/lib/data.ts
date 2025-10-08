@@ -35,7 +35,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'g2',
     title: 'GAS-24',
     description: 'A 3D psx-styled horror game inside a gasstation.',
-    category: ['game'],
+    category: ['game', '3d'],
     imageUrl: '/images/gas24.png',
     imageHint: 'Gas24',
     url: 'https://zwiebelonkel.itch.io/gas-24',
