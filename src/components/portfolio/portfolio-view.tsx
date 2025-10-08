@@ -47,6 +47,18 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
       setSelectedItem(item);
     }
   };
+  
+  const handleItemAction = (item: PortfolioItem) => {
+    if (item.category.includes('music')) {
+      if (currentTrack?.id === item.id) {
+        togglePlayPause();
+      } else {
+        playTrack(item);
+      }
+    } else {
+      handleCardClick(item);
+    }
+  };
 
   return (
     <>
@@ -84,7 +96,8 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
           <PortfolioCard
             key={item.id}
             item={item}
-            onCardClick={handleCardClick}
+            onCardClick={() => handleCardClick(item)}
+            onActionClick={() => handleItemAction(item)}
             isPlaying={item.id === currentTrack?.id && isPlaying}
           />
         ))}

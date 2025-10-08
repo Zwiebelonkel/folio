@@ -103,7 +103,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: ['music'],
     imageUrl: '/images/nis.jpg',
     imageHint: 'NIS',
-    audioUrl: 'https://open.spotify.com/intl-de/track/2QsA3EukXQY3S4S0CRqwpn?si=312acf9d7fe24b65',
+    url: 'https://open.spotify.com/intl-de/track/2QsA3EukXQY3S4S0CRqwpn?si=312acf9d7fe24b65',
+    audioUrl: '/audio/placeholder.mp3',
     tags: ['FL Studio'],
   },
   {
@@ -113,7 +114,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: ['music'],
     imageUrl: '/images/smoke.jpg',
     imageHint: 'SMOKE',
-    audioUrl: 'https://open.spotify.com/intl-de/track/5ELcT07OoPaQhqmpbHXLCm?si=0ee634c7f2bb4b3e',
+    url: 'https://open.spotify.com/intl-de/track/5ELcT07OoPaQhqmpbHXLCm?si=0ee634c7f2bb4b3e',
+    audioUrl: '/audio/placeholder.mp3',
     tags: ['FL Studio'],
   },
   {
@@ -123,7 +125,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: ['music'],
     imageUrl: '/images/wanted.jpg',
     imageHint: 'WANTED',
-    audioUrl: 'https://open.spotify.com/intl-de/track/6xQRBSiPcwjAjBELq987dS?si=5b0b8b27189f40ff',
+    url: 'https://open.spotify.com/intl-de/track/6xQRBSiPcwjAjBELq987dS?si=5b0b8b27189f40ff',
+    audioUrl: '/audio/placeholder.mp3',
     tags: ['FL Studio'],
   },
 

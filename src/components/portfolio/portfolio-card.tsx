@@ -4,18 +4,19 @@
 import type { PortfolioItem } from '@/lib/types';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Eye, Link as LinkIcon, Play, Pause, Video } from 'lucide-react';
+import { Eye, Link as LinkIcon, Play, Pause, Video, Music } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import React, { useRef, useState } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 interface PortfolioCardProps {
   item: PortfolioItem;
-  onCardClick: (item: PortfolioItem) => void;
+  onCardClick: () => void;
+  onActionClick: () => void;
   isPlaying?: boolean;
 }
 
-export function PortfolioCard({ item, onCardClick, isPlaying = false }: PortfolioCardProps) {
+export function PortfolioCard({ item, onCardClick, onActionClick, isPlaying = false }: PortfolioCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [style, setStyle] = useState({});
   const isMobile = useIsMobile();
@@ -60,10 +61,15 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
 
   const { text, icon: Icon } = getAction();
 
+  const handleActionClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onActionClick();
+  };
+
   return (
     <Card 
       ref={cardRef}
-      onClick={() => onCardClick(item)}
+      onClick={onCardClick}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       style={style as React.CSSProperties}
@@ -89,7 +95,7 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
           <h3 className="text-lg font-bold font-headline group-hover:text-primary transition-colors">{item.title}</h3>
           <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{item.description}</p>
         </div>
-        <Button onClick={(e) => {e.stopPropagation(); onCardClick(item)}} className="w-full mt-4" variant={isPlaying && item.category.includes('music') ? 'default' : 'secondary'}>
+        <Button onClick={handleActionClick} className="w-full mt-4" variant={isPlaying && item.category.includes('music') ? 'default' : 'secondary'}>
           <Icon className="mr-2 h-4 w-4" />
           {text}
         </Button>

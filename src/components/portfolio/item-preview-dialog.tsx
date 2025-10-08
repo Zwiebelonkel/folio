@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Link as LinkIcon } from 'lucide-react';
+import { Link as LinkIcon, Music } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Separator } from '../ui/separator';
 
@@ -37,6 +37,13 @@ export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialo
   const is3d = item.category.includes('3d') && !!item.url;
   const isExternalLink = !!item.url && item.url.startsWith('http');
   const isSketchfab3d = is3d && isExternalLink;
+  const isMusic = item.category.includes('music');
+
+  const getLinkText = () => {
+    if (isSketchfab3d) return 'View on Sketchfab';
+    if (isMusic) return 'Listen on Spotify';
+    return 'Visit Link';
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -69,8 +76,8 @@ export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialo
                 <div className="mt-6">
                   <Button asChild>
                     <a href={item.url} target="_blank" rel="noopener noreferrer">
-                      <LinkIcon className="mr-2 h-4 w-4" />
-                      {isSketchfab3d ? 'View on Sketchfab' : 'Visit Link'}
+                      {isMusic ? <Music className="mr-2 h-4 w-4" /> : <LinkIcon className="mr-2 h-4 w-4" />}
+                      {getLinkText()}
                     </a>
                   </Button>
                 </div>
@@ -81,7 +88,7 @@ export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialo
             "relative bg-muted md:h-full",
             is3d ? "min-h-[400px] md:min-h-0" : "aspect-video"
           )}>
-            {is3d ? (
+            {is3d && !isExternalLink ? (
               <model-viewer
                   src={item.url}
                   alt={item.title}
