@@ -6,7 +6,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'w1',
     title: 'Outside Between',
     description: 'A social Webgame about Cards and Luck.',
-    category: ['website'],
+    category: ['website', 'game'],
     imageUrl: '/images/outside.png',
     imageHint: 'album art',
     url: 'https://outside---between.web.app/',
@@ -147,7 +147,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'd4',
     title: 'Beatstick',
     description: 'A music controler with motion-control, sequencer and samlple management. Made as a university project.',
-    category: ['3d', 'music'],
+    category: ['3d'],
     imageUrl: '/images/BeatstickCover.png',
     imageHint: 'Beatstick',
     url: '/models/beatstick.glb'

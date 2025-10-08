@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/button';
 import { PortfolioCard } from './portfolio-card';
 import { ItemPreviewDialog } from './item-preview-dialog';
 import { useMusicPlayer } from '@/components/contexts/music-player-context';
-import { LayoutGrid, Gamepad2, Globe, Box, Music, Link as LinkIcon, Video } from 'lucide-react';
+import { LayoutGrid, Gamepad2, Globe, Box, Music, Link as LinkIcon, Video, Search } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 
 const categories: { name: string; value: Category | 'all'; icon: React.ElementType }[] = [
   { name: 'All', value: 'all', icon: LayoutGrid },
@@ -22,11 +23,16 @@ const categories: { name: string; value: Category | 'all'; icon: React.ElementTy
 export function PortfolioView({ items }: { items: PortfolioItem[] }) {
   const [activeFilter, setActiveFilter] = useState<Category | 'all'>('all');
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
   const { playTrack, currentTrack, isPlaying, togglePlayPause } = useMusicPlayer();
 
-  const filteredItems = items.filter(
-    item => activeFilter === 'all' || item.category.includes(activeFilter)
-  );
+  const filteredItems = items.filter(item => {
+    const matchesCategory = activeFilter === 'all' || item.category.includes(activeFilter);
+    const matchesSearch = searchTerm.trim() === '' ||
+                          item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          item.description.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   const handleCardClick = (item: PortfolioItem) => {
     if (item.category.includes('music')) {
@@ -44,18 +50,30 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
 
   return (
     <>
-      <div className="mb-8 flex flex-wrap items-center justify-center gap-2">
-        {categories.map(({ name, value, icon: Icon }) => (
-          <Button
-            key={value}
-            variant={activeFilter === value ? 'default' : 'outline'}
-            onClick={() => setActiveFilter(value)}
-            className="capitalize gap-2"
-          >
-            <Icon className="h-4 w-4" />
-            {name}
-          </Button>
-        ))}
+      <div className="mb-8 space-y-4">
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          {categories.map(({ name, value, icon: Icon }) => (
+            <Button
+              key={value}
+              variant={activeFilter === value ? 'default' : 'outline'}
+              onClick={() => setActiveFilter(value)}
+              className="capitalize gap-2"
+            >
+              <Icon className="h-4 w-4" />
+              {name}
+            </Button>
+          ))}
+        </div>
+        <div className="relative max-w-md mx-auto">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input 
+            type="search"
+            placeholder="Search projects..."
+            className="pl-10"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
       </div>
 
       <div 
