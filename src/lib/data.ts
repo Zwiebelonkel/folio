@@ -143,6 +143,15 @@ export const portfolioItems: PortfolioItem[] = [
     imageHint: 'Cigarettes',
     url: '/models/cigs.glb'
   },
+  {
+    id: 'd4',
+    title: 'Beatstick',
+    description: 'A music controler with motion-control, sequencer and samlple management. Made as a university project.',
+    category: '3d',
+    imageUrl: '/images/BeatstickCover.png',
+    imageHint: 'Beatstick',
+    url: '/models/beatstick.glb'
+  },
 
   // Links
   {

@@ -20,7 +20,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-start">
           <div className="flex items-center gap-3">
             <Image 
-              src="/LM.png" 
+              src="images/LM_nobg.png" 
               alt="LM Logo"
               width={32} 
               height={32} 

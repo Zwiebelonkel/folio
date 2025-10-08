@@ -46,16 +46,16 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
 
 
   const getAction = () => {
-    switch (item.category) {
-      case 'music':
-        return isPlaying ? { text: 'Pause', icon: Pause } : { text: 'Play', icon: Play };
-      case 'link':
-        return { text: 'Visit', icon: LinkIcon };
-      case 'video':
-        return { text: 'Watch', icon: Video };
-      default:
-        return { text: 'Preview', icon: Eye };
+    if (item.category === 'music') {
+      return isPlaying ? { text: 'Pause', icon: Pause } : { text: 'Play', icon: Play };
     }
+    if (item.category === 'link') {
+      return { text: 'Visit', icon: LinkIcon };
+    }
+    if (item.category === 'video') {
+      return { text: 'Watch', icon: Video };
+    }
+    return { text: 'Preview', icon: Eye };
   };
 
   const { text, icon: Icon } = getAction();
@@ -78,7 +78,9 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
           data-ai-hint={item.imageHint}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-        <Badge variant="secondary" className="absolute top-3 right-3 capitalize">{item.category}</Badge>
+        <div className="absolute top-3 right-3 flex gap-2">
+          <Badge variant="secondary" className="capitalize">{item.category}</Badge>
+        </div>
       </div>
       <CardContent className="p-4 flex-1 flex flex-col justify-between">
         <div>

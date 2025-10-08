@@ -47,7 +47,7 @@ export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialo
               <DialogDescription className="text-base pt-2 text-muted-foreground">{item.description}</DialogDescription>
             </DialogHeader>
             <div className="flex-1 flex flex-col justify-between">
-              <div className="mt-4">
+              <div className="mt-4 flex flex-wrap gap-2">
                 <Badge variant="outline" className="capitalize">{item.category}</Badge>
               </div>
               {isExternalLink && (
