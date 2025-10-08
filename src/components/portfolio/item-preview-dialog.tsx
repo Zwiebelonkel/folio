@@ -33,7 +33,7 @@ interface ItemPreviewDialogProps {
 export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialogProps) {
   if (!item) return null;
 
-  const is3d = item.category === '3d' && !!item.url;
+  const is3d = item.category.includes('3d') && !!item.url;
   const isExternalLink = !!item.url && item.url.startsWith('http');
   const isSketchfab3d = is3d && isExternalLink;
 
@@ -48,7 +48,9 @@ export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialo
             </DialogHeader>
             <div className="flex-1 flex flex-col justify-between">
               <div className="mt-4 flex flex-wrap gap-2">
-                <Badge variant="outline" className="capitalize">{item.category}</Badge>
+                {item.category.map(cat => (
+                  <Badge key={cat} variant="outline" className="capitalize">{cat}</Badge>
+                ))}
               </div>
               {isExternalLink && (
                 <div className="mt-6">

@@ -17,7 +17,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const playTrack = (track: PortfolioItem) => {
-    if (track.category !== 'music') return;
+    if (!track.category.includes('music')) return;
     setCurrentTrack(track);
     setIsPlaying(true);
   };

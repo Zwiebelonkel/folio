@@ -4,7 +4,7 @@ export interface PortfolioItem {
   id: string;
   title: string;
   description: string;
-  category: Category;
+  category: Category[];
   imageUrl: string;
   imageHint: string;
   url?: string;

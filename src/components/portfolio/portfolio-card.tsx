@@ -46,13 +46,13 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
 
 
   const getAction = () => {
-    if (item.category === 'music') {
+    if (item.category.includes('music')) {
       return isPlaying ? { text: 'Pause', icon: Pause } : { text: 'Play', icon: Play };
     }
-    if (item.category === 'link') {
+    if (item.category.includes('link')) {
       return { text: 'Visit', icon: LinkIcon };
     }
-    if (item.category === 'video') {
+    if (item.category.includes('video')) {
       return { text: 'Watch', icon: Video };
     }
     return { text: 'Preview', icon: Eye };
@@ -79,7 +79,9 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         <div className="absolute top-3 right-3 flex gap-2">
-          <Badge variant="secondary" className="capitalize">{item.category}</Badge>
+          {item.category.map(cat => (
+            <Badge key={cat} variant="secondary" className="capitalize">{cat}</Badge>
+          ))}
         </div>
       </div>
       <CardContent className="p-4 flex-1 flex flex-col justify-between">
@@ -87,7 +89,7 @@ export function PortfolioCard({ item, onCardClick, isPlaying = false }: Portfoli
           <h3 className="text-lg font-bold font-headline group-hover:text-primary transition-colors">{item.title}</h3>
           <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{item.description}</p>
         </div>
-        <Button onClick={(e) => {e.stopPropagation(); onCardClick(item)}} className="w-full mt-4" variant={isPlaying && item.category === 'music' ? 'default' : 'secondary'}>
+        <Button onClick={(e) => {e.stopPropagation(); onCardClick(item)}} className="w-full mt-4" variant={isPlaying && item.category.includes('music') ? 'default' : 'secondary'}>
           <Icon className="mr-2 h-4 w-4" />
           {text}
         </Button>

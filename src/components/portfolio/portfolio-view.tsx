@@ -25,17 +25,17 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
   const { playTrack, currentTrack, isPlaying, togglePlayPause } = useMusicPlayer();
 
   const filteredItems = items.filter(
-    item => activeFilter === 'all' || item.category === activeFilter
+    item => activeFilter === 'all' || item.category.includes(activeFilter)
   );
 
   const handleCardClick = (item: PortfolioItem) => {
-    if (item.category === 'music') {
+    if (item.category.includes('music')) {
       if (currentTrack?.id === item.id) {
         togglePlayPause();
       } else {
         playTrack(item);
       }
-    } else if (item.category === 'link' && item.url) {
+    } else if (item.category.includes('link') && item.url) {
       window.open(item.url, '_blank', 'noopener,noreferrer');
     } else {
       setSelectedItem(item);
