@@ -10,6 +10,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/outside.png',
     imageHint: 'album art',
     url: 'https://outside---between.web.app/',
+    tags: ['Angular'],
   },
   {
     id: 'w2',
@@ -19,6 +20,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/learn.png',
     imageHint: 'McLearn',
     url: 'https://mclearn-d113a.web.app/',
+    tags: ['Angular'],
   },
 
   // Games
@@ -30,6 +32,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/darkestCards.png',
     imageHint: 'Darkest Cards',
     url: 'https://zwiebelonkel.itch.io/darkest-cards',
+    tags: ['Gdevelop'],
   },
   {
     id: 'g2',
@@ -39,6 +42,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/gas24.png',
     imageHint: 'Gas24',
     url: 'https://zwiebelonkel.itch.io/gas-24',
+    tags: ['Godot', 'Blender'],
   },
   {
     id: 'g3',
@@ -48,6 +52,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/driver.png',
     imageHint: 'Driver',
     url: 'https://zwiebelonkel.itch.io/driver',
+    tags: ['Godot'],
   },
   {
     id: 'g4',
@@ -57,6 +62,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/fighter.png',
     imageHint: 'Fighter',
     url: 'https://zwiebelonkel.itch.io/fighter',
+    tags: ['Gdevelop'],
   },
   {
     id: 'g5',
@@ -66,6 +72,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/ball.jpeg',
     imageHint: 'Ball',
     url: 'https://zwiebelonkel.itch.io/ball',
+    tags: ['Gdevelop'],
   },
   {
     id: 'g6',
@@ -75,6 +82,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/pitfall.png',
     imageHint: 'Pitfall',
     url: 'https://zwiebelonkel.itch.io/pitfall',
+    tags: ['Gdevelop'],
   },
   {
     id: 'g7',
@@ -84,6 +92,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/pizza.png',
     imageHint: 'Pizza Dude',
     url: 'https://zwiebelonkel.itch.io/daddy',
+    tags: ['Gdevelop'],
   },
 
   // Music
@@ -95,6 +104,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/nis.jpg',
     imageHint: 'NIS',
     audioUrl: 'https://open.spotify.com/intl-de/track/2QsA3EukXQY3S4S0CRqwpn?si=312acf9d7fe24b65',
+    tags: ['FL Studio'],
   },
   {
     id: 'm2',
@@ -104,6 +114,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/smoke.jpg',
     imageHint: 'SMOKE',
     audioUrl: 'https://open.spotify.com/intl-de/track/5ELcT07OoPaQhqmpbHXLCm?si=0ee634c7f2bb4b3e',
+    tags: ['FL Studio'],
   },
   {
     id: 'm3',
@@ -113,6 +124,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/wanted.jpg',
     imageHint: 'WANTED',
     audioUrl: 'https://open.spotify.com/intl-de/track/6xQRBSiPcwjAjBELq987dS?si=5b0b8b27189f40ff',
+    tags: ['FL Studio'],
   },
 
   // 3D Models
@@ -123,7 +135,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: ['3d'],
     imageUrl: '/images/glasses.png',
     imageHint: 'Orange glasses',
-    url: '/models/brille.glb'
+    url: '/models/brille.glb',
+    tags: ['Blender'],
   },
   {
     id: 'd2',
@@ -132,7 +145,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: ['3d'],
     imageUrl: '/images/buro.png',
     imageHint: 'Office Assets',
-    url: '/models/office.glb'
+    url: '/models/office.glb',
+    tags: ['Blender'],
   },
   {
     id: 'd3',
@@ -141,16 +155,18 @@ export const portfolioItems: PortfolioItem[] = [
     category: ['3d'],
     imageUrl: '/images/redSmoke.png',
     imageHint: 'Cigarettes',
-    url: '/models/cigs.glb'
+    url: '/models/cigs.glb',
+    tags: ['Blender'],
   },
   {
     id: 'd4',
     title: 'Beatstick',
     description: 'A music controler with motion-control, sequencer and samlple management. Made as a university project.',
-    category: ['3d'],
+    category: ['3d', 'music'],
     imageUrl: '/images/BeatstickCover.png',
     imageHint: 'Beatstick',
-    url: '/models/beatstick.glb'
+    url: '/models/beatstick.glb',
+    tags: ['Blender'],
   },
 
   // Links
@@ -208,6 +224,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/motor.jpg',
     imageHint: 'Motor',
     url: 'https://youtu.be/pbVQ6tK6uyU',
+    tags: ['Adobe'],
   },
   {
     id: 'v2',
@@ -217,6 +234,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/dieb.png',
     imageHint: 'Dieb',
     url: 'https://youtu.be/A3iveKzEfV4',
+    tags: ['Adobe'],
   },
   {
     id: 'v3',
@@ -226,6 +244,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/tunnels.png',
     imageHint: 'Tunnels',
     url: 'https://youtu.be/x5AXkivYhog',
+    tags: ['Adobe', 'Blender'],
   },
   {
     id: 'v4',
@@ -235,5 +254,6 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/foodwars.png',
     imageHint: 'FOODWARS',
     url: 'https://youtu.be/4Yg9T_xH1KQ',
+    tags: ['Adobe', 'Blender'],
   },
 ];

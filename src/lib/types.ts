@@ -8,5 +8,6 @@ export interface PortfolioItem {
   imageUrl: string;
   imageHint: string;
   url?: string;
-  audioUrl?: string; 
+  audioUrl?: string;
+  tags?: string[];
 }

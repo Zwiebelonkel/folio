@@ -14,6 +14,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Link as LinkIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Separator } from '../ui/separator';
 
 // Add this for model-viewer custom element
 declare global {
@@ -47,10 +48,22 @@ export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialo
               <DialogDescription className="text-base pt-2 text-muted-foreground">{item.description}</DialogDescription>
             </DialogHeader>
             <div className="flex-1 flex flex-col justify-between">
-              <div className="mt-4 flex flex-wrap gap-2">
-                {item.category.map(cat => (
-                  <Badge key={cat} variant="outline" className="capitalize">{cat}</Badge>
-                ))}
+              <div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {item.category.map(cat => (
+                    <Badge key={cat} variant="outline" className="capitalize">{cat}</Badge>
+                  ))}
+                </div>
+                {item.tags && item.tags.length > 0 && (
+                  <>
+                    <Separator className="my-4" />
+                    <div className="flex flex-wrap gap-2">
+                      {item.tags.map(tag => (
+                        <Badge key={tag} variant="secondary">{tag}</Badge>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
               {isExternalLink && (
                 <div className="mt-6">
