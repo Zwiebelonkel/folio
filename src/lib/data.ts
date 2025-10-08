@@ -10,7 +10,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/outside.png',
     imageHint: 'album art',
     url: 'https://outside---between.web.app/',
-    tags: ['Angular'],
+    tags: ['Angular','Blender', 'TursoDB', 'Render', 'Cloudinary'],
   },
   {
     id: 'w2',
@@ -20,7 +20,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/learn.png',
     imageHint: 'McLearn',
     url: 'https://mclearn-d113a.web.app/',
-    tags: ['Angular'],
+    tags: ['Angular', 'TursoDB', 'Render', 'Cloudinary'],
   },
 
   // Games
@@ -32,7 +32,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/darkestCards.png',
     imageHint: 'Darkest Cards',
     url: 'https://zwiebelonkel.itch.io/darkest-cards',
-    tags: ['Gdevelop'],
+    tags: ['Gdevelop', 'Piskel', 'FL Studio', 'Graphic'],
   },
   {
     id: 'g2',
@@ -42,7 +42,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/gas24.png',
     imageHint: 'Gas24',
     url: 'https://zwiebelonkel.itch.io/gas-24',
-    tags: ['Godot', 'Blender'],
+    tags: ['Godot', 'Blender', 'FL Studio', 'Graphic'],
   },
   {
     id: 'g3',
@@ -52,7 +52,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/driver.png',
     imageHint: 'Driver',
     url: 'https://zwiebelonkel.itch.io/driver',
-    tags: ['Godot'],
+    tags: ['Gdevelop', 'Piskel', 'FL Studio', 'Graphic'],
   },
   {
     id: 'g4',
@@ -62,7 +62,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/fighter.png',
     imageHint: 'Fighter',
     url: 'https://zwiebelonkel.itch.io/fighter',
-    tags: ['Gdevelop'],
+    tags: ['Gdevelop', 'Piskel', 'FL Studio', 'Graphic'],
   },
   {
     id: 'g5',
@@ -72,7 +72,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/ball.jpeg',
     imageHint: 'Ball',
     url: 'https://zwiebelonkel.itch.io/ball',
-    tags: ['Gdevelop'],
+    tags: ['Gdevelop', 'Piskel', 'FL Studio', 'Graphic'],
   },
   {
     id: 'g6',
@@ -82,7 +82,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/pitfall.png',
     imageHint: 'Pitfall',
     url: 'https://zwiebelonkel.itch.io/pitfall',
-    tags: ['Gdevelop'],
+    tags: ['Gdevelop', 'Piskel', 'FL Studio', 'Graphic'],
   },
   {
     id: 'g7',
@@ -92,7 +92,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/pizza.png',
     imageHint: 'Pizza Dude',
     url: 'https://zwiebelonkel.itch.io/daddy',
-    tags: ['Gdevelop'],
+    tags: ['Gdevelop', 'Piskel', 'FL Studio', 'Graphic'],
   },
 
   // Music
@@ -224,7 +224,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/motor.jpg',
     imageHint: 'Motor',
     url: 'https://youtu.be/pbVQ6tK6uyU',
-    tags: ['Adobe'],
+    tags: ['Adobe', 'Graphic'],
   },
   {
     id: 'v2',
@@ -254,6 +254,6 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/foodwars.png',
     imageHint: 'FOODWARS',
     url: 'https://youtu.be/4Yg9T_xH1KQ',
-    tags: ['Adobe', 'Blender'],
+    tags: ['Adobe'],
   },
 ];
