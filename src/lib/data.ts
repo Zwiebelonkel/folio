@@ -22,6 +22,16 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://mclearn-d113a.web.app/',
     tags: ['Angular', 'TursoDB', 'Render', 'Cloudinary'],
   },
+  {
+    id: 'w3',
+    title: 'CAR BRO',
+    description: 'A website for identifiying cars. Just upload a picture and see all important stats about your car.',
+    category: ['website'],
+    imageUrl: '/images/carbro.png',
+    imageHint: 'CAR BRO',
+    url: 'https://carbroki.web.app/',
+    tags: ['Angular', 'TursoDB', 'Render', 'Gemini', 'AI'],
+  },
 
   // Games
   {
