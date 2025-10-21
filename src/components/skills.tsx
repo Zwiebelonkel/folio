@@ -57,72 +57,76 @@ export function Skills({ skills }: SkillsProps) {
                         <TabsTrigger value="bar">Bar</TabsTrigger>
                       </TabsList>
                     </div>
-                    <div className="mt-4 mx-auto w-full h-[500px]">
+                    <div className="mt-4 mx-auto w-full">
                       <TabsContent value="radar" className="h-full">
-                        <ChartContainer
-                          config={chartConfig}
-                          className="w-full h-full"
-                        >
-                          <ResponsiveContainer>
-                            <RadarChart 
-                              data={chartData}
-                              margin={{
-                                top: 20,
-                                right: 20,
-                                bottom: 20,
-                                left: 20,
-                              }}
-                            >
-                              <ChartTooltip
-                                cursor={false}
-                                content={<ChartTooltipContent indicator="dot" />}
-                              />
-                              <PolarGrid />
-                              <PolarAngleAxis 
-                                dataKey="subject" 
-                                tick={{ fill: 'hsl(var(--foreground))', fontSize: 14 }} 
-                              />
-                              <PolarRadiusAxis 
-                                angle={90} 
-                                domain={[0, 100]} 
-                                tick={false} 
-                                axisLine={false} 
-                              />
-                              <Radar 
-                                name="Proficiency" 
-                                dataKey="level" 
-                                stroke="hsl(var(--primary))" 
-                                fill="hsl(var(--primary))" 
-                                fillOpacity={0.6} 
-                              />
-                            </RadarChart>
-                          </ResponsiveContainer>
-                        </ChartContainer>
-                      </TabsContent>
-                      <TabsContent value="bar" className="h-full">
-                         <ChartContainer
-                          config={chartConfig}
-                           className="w-full h-full"
-                         >
+                        <div className="h-[500px]">
+                          <ChartContainer
+                            config={chartConfig}
+                            className="w-full h-full"
+                          >
                             <ResponsiveContainer>
-                              <BarChart data={chartData} layout="vertical" margin={{ left: 10, right: 40 }}>
+                              <RadarChart 
+                                data={chartData}
+                                margin={{
+                                  top: 20,
+                                  right: 20,
+                                  bottom: 20,
+                                  left: 20,
+                                }}
+                              >
                                 <ChartTooltip
                                   cursor={false}
                                   content={<ChartTooltipContent indicator="dot" />}
                                 />
-                                <XAxis type="number" domain={[0, 100]} hide />
-                                <YAxis 
+                                <PolarGrid />
+                                <PolarAngleAxis 
                                   dataKey="subject" 
-                                  type="category" 
-                                  tickLine={false} 
-                                  axisLine={false} 
-                                  tick={{ fill: 'hsl(var(--foreground))', fontSize: 14 }}
-                                  width={80}
+                                  tick={{ fill: 'hsl(var(--foreground))', fontSize: 14 }} 
                                 />
-                                <Bar dataKey="level" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} />
-                              </BarChart>
+                                <PolarRadiusAxis 
+                                  angle={90} 
+                                  domain={[0, 100]} 
+                                  tick={false} 
+                                  axisLine={false} 
+                                />
+                                <Radar 
+                                  name="Proficiency" 
+                                  dataKey="level" 
+                                  stroke="hsl(var(--primary))" 
+                                  fill="hsl(var(--primary))" 
+                                  fillOpacity={0.6} 
+                                />
+                              </RadarChart>
                             </ResponsiveContainer>
                           </ChartContainer>
+                        </div>
+                      </TabsContent>
+                      <TabsContent value="bar" className="h-full">
+                        <div className="h-[350px]">
+                           <ChartContainer
+                            config={chartConfig}
+                             className="w-full h-full"
+                           >
+                              <ResponsiveContainer>
+                                <BarChart data={chartData} layout="vertical" margin={{ left: 10, right: 40 }}>
+                                  <ChartTooltip
+                                    cursor={false}
+                                    content={<ChartTooltipContent indicator="dot" />}
+                                  />
+                                  <XAxis type="number" domain={[0, 100]} hide />
+                                  <YAxis 
+                                    dataKey="subject" 
+                                    type="category" 
+                                    tickLine={false} 
+                                    axisLine={false} 
+                                    tick={{ fill: 'hsl(var(--foreground))', fontSize: 14 }}
+                                    width={80}
+                                  />
+                                  <Bar dataKey="level" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} />
+                                </BarChart>
+                              </ResponsiveContainer>
+                            </ChartContainer>
+                         </div>
                       </TabsContent>
                     </div>
                   </Tabs>

@@ -5,7 +5,7 @@ export const skillsData: Skill[] = [
   { name: 'Python', level: 65 },
   { name: 'Blender', level: 90 },
   { name: 'FL Studio', level: 91 },
-  { name: 'Videoedit', level: 95 },
+  { name: 'Videoediting', level: 95 },
   { name: 'Godot', level: 62 },
   { name: 'Gdevelop', level: 96 },
 
