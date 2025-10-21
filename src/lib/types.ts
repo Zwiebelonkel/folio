@@ -1,5 +1,10 @@
 export type Category = 'game' | 'website' | '3d' | 'music' | 'link' | 'video';
 
+export interface Skill {
+  name: string;
+  level: number;
+}
+
 export interface PortfolioItem {
   id: string;
   title: string;

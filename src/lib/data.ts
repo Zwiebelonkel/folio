@@ -1,4 +1,12 @@
-import type { PortfolioItem } from './types';
+import type { PortfolioItem, Skill } from './types';
+
+export const skillsData: Skill[] = [
+  { name: 'Angular', level: 90 },
+  { name: 'Python', level: 75 },
+  { name: 'Blender', level: 85 },
+  { name: 'FL Studio', level: 95 },
+  { name: 'Adobe Suite', level: 80 },
+];
 
 export const portfolioItems: PortfolioItem[] = [
   // Websites
@@ -175,7 +183,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'd4',
     title: 'Beatstick',
     description: 'A music controler with motion-control, sequencer and samlple management. Made as a university project.',
-    category: ['3d'],
+    category: ['3d', 'music'],
     imageUrl: '/images/BeatstickCover.png',
     imageHint: 'Beatstick',
     url: '/models/beatstick.glb',
@@ -256,7 +264,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/motor.jpg',
     imageHint: 'Motor',
     url: 'https://youtu.be/pbVQ6tK6uyU',
-    tags: ['Adobe', 'Graphic'],
+    tags: ['Adobe'],
   },
   {
     id: 'v2',
