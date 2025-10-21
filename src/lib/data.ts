@@ -255,7 +255,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: ['link'],
     imageUrl: '/images/linkedIn.png',
     imageHint: 'LinkedIn',
-    url: 'https://play.google.com/store/apps/dev?id=7237929260257047382&hl=de',
+    url: 'https://www.linkedin.com/in/luca-m%C3%BCller-a182ab323/',
   },
 
   {
