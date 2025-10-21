@@ -1,11 +1,15 @@
 import type { PortfolioItem, Skill } from './types';
 
 export const skillsData: Skill[] = [
-  { name: 'Angular', level: 90 },
-  { name: 'Python', level: 75 },
-  { name: 'Blender', level: 85 },
-  { name: 'FL Studio', level: 95 },
-  { name: 'Adobe Suite', level: 80 },
+  { name: 'Angular', level: 85 },
+  { name: 'Python', level: 65 },
+  { name: 'Blender', level: 90 },
+  { name: 'FL Studio', level: 91 },
+  { name: 'Videoedit', level: 95 },
+  { name: 'Godot', level: 62 },
+  { name: 'Gdevelop', level: 96 },
+
+
 ];
 
 export const portfolioItems: PortfolioItem[] = [
