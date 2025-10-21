@@ -12,6 +12,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface SkillsProps {
   skills: Skill[];
@@ -35,50 +36,58 @@ export function Skills({ skills }: SkillsProps) {
   return (
     <section className="py-12 sm:py-16">
        <Card className="max-w-4xl mx-auto">
-          <CardHeader>
-            <CardTitle className="text-3xl font-bold text-center font-headline">My Skills</CardTitle>
-          </CardHeader>
-          <CardContent className="p-6 pt-0">
-            <ChartContainer
-                config={chartConfig}
-                className="mx-auto aspect-square max-h-[400px]"
-              >
-              <ResponsiveContainer>
-                <RadarChart 
-                  data={chartData}
-                  margin={{
-                    top: 20,
-                    right: 20,
-                    bottom: 20,
-                    left: 20,
-                  }}
-                >
-                  <ChartTooltip
-                    cursor={false}
-                    content={<ChartTooltipContent indicator="dot" />}
-                  />
-                  <PolarGrid />
-                  <PolarAngleAxis 
-                    dataKey="subject" 
-                    tick={{ fill: 'hsl(var(--foreground))', fontSize: 14 }} 
-                  />
-                  <PolarRadiusAxis 
-                    angle={90} 
-                    domain={[0, 100]} 
-                    tick={false} 
-                    axisLine={false} 
-                  />
-                  <Radar 
-                    name="Proficiency" 
-                    dataKey="level" 
-                    stroke="hsl(var(--primary))" 
-                    fill="hsl(var(--primary))" 
-                    fillOpacity={0.6} 
-                  />
-                </RadarChart>
-              </ResponsiveContainer>
-            </ChartContainer>
-          </CardContent>
+         <Accordion type="single" collapsible defaultValue="item-1">
+            <AccordionItem value="item-1" className="border-b-0">
+              <AccordionTrigger className="p-6 hover:no-underline">
+                <CardHeader className="p-0 flex-1">
+                  <CardTitle className="text-3xl font-bold text-center font-headline">My Skills</CardTitle>
+                </CardHeader>
+              </AccordionTrigger>
+              <AccordionContent>
+                <CardContent className="p-6 pt-0">
+                  <ChartContainer
+                      config={chartConfig}
+                      className="mx-auto aspect-square max-h-[400px]"
+                    >
+                    <ResponsiveContainer>
+                      <RadarChart 
+                        data={chartData}
+                        margin={{
+                          top: 20,
+                          right: 20,
+                          bottom: 20,
+                          left: 20,
+                        }}
+                      >
+                        <ChartTooltip
+                          cursor={false}
+                          content={<ChartTooltipContent indicator="dot" />}
+                        />
+                        <PolarGrid />
+                        <PolarAngleAxis 
+                          dataKey="subject" 
+                          tick={{ fill: 'hsl(var(--foreground))', fontSize: 14 }} 
+                        />
+                        <PolarRadiusAxis 
+                          angle={90} 
+                          domain={[0, 100]} 
+                          tick={false} 
+                          axisLine={false} 
+                        />
+                        <Radar 
+                          name="Proficiency" 
+                          dataKey="level" 
+                          stroke="hsl(var(--primary))" 
+                          fill="hsl(var(--primary))" 
+                          fillOpacity={0.6} 
+                        />
+                      </RadarChart>
+                    </ResponsiveContainer>
+                  </ChartContainer>
+                </CardContent>
+              </AccordionContent>
+            </AccordionItem>
+         </Accordion>
       </Card>
     </section>
   );
