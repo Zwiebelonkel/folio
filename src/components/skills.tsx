@@ -57,7 +57,7 @@ export function Skills({ skills }: SkillsProps) {
                         <TabsTrigger value="bar">Bar</TabsTrigger>
                       </TabsList>
                     </div>
-                    <div className="mt-4 mx-auto aspect-square max-h-[400px]">
+                    <div className="mt-4 mx-auto aspect-square max-h-[500px]">
                       <TabsContent value="radar">
                         <ChartContainer
                           config={chartConfig}
