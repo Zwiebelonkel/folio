@@ -50,7 +50,7 @@ export function Skills({ skills }: SkillsProps) {
               </AccordionTrigger>
               <AccordionContent>
                 <CardContent className="p-6 pt-0">
-                  <Tabs defaultValue="radar" className="w-full">
+                  <Tabs defaultValue="bar" className="w-full">
                     <div className="flex justify-center">
                       <TabsList>
                         <TabsTrigger value="radar">Radar</TabsTrigger>
