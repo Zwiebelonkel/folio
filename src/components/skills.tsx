@@ -57,8 +57,8 @@ export function Skills({ skills }: SkillsProps) {
                         <TabsTrigger value="bar">Bar</TabsTrigger>
                       </TabsList>
                     </div>
-                    <div className="mt-4 mx-auto aspect-square max-h-[500px]">
-                      <TabsContent value="radar">
+                    <div className="mt-4 mx-auto w-full h-[500px]">
+                      <TabsContent value="radar" className="h-full">
                         <ChartContainer
                           config={chartConfig}
                           className="w-full h-full"
@@ -99,7 +99,7 @@ export function Skills({ skills }: SkillsProps) {
                           </ResponsiveContainer>
                         </ChartContainer>
                       </TabsContent>
-                      <TabsContent value="bar">
+                      <TabsContent value="bar" className="h-full">
                          <ChartContainer
                           config={chartConfig}
                            className="w-full h-full"
