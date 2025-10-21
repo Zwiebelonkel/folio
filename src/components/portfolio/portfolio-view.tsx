@@ -30,7 +30,8 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
     const matchesCategory = activeFilter === 'all' || item.category.includes(activeFilter);
     const matchesSearch = searchTerm.trim() === '' ||
                           item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          item.description.toLowerCase().includes(searchTerm.toLowerCase());
+                          item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          item.tags?.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
     return matchesCategory && matchesSearch;
   });
 
@@ -49,6 +50,7 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
   };
   
   const handleItemAction = (item: PortfolioItem) => {
+    // Action click on music card should always toggle play/pause
     if (item.category.includes('music')) {
       if (currentTrack?.id === item.id) {
         togglePlayPause();
@@ -56,7 +58,8 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
         playTrack(item);
       }
     } else {
-      handleCardClick(item);
+      // For other items, the action is to open the preview dialog
+      setSelectedItem(item);
     }
   };
 
