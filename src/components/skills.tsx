@@ -59,7 +59,7 @@ export function Skills({ skills }: SkillsProps) {
                     </div>
                     <div className="mt-4 mx-auto w-full">
                       <TabsContent value="radar" className="h-full">
-                        <div className="h-[500px]">
+                        <div className="h-[300px]">
                           <ChartContainer
                             config={chartConfig}
                             className="w-full h-full"
@@ -102,7 +102,7 @@ export function Skills({ skills }: SkillsProps) {
                         </div>
                       </TabsContent>
                       <TabsContent value="bar" className="h-full">
-                        <div className="h-[350px]">
+                        <div className="h-[300px]">
                            <ChartContainer
                             config={chartConfig}
                              className="w-full h-full"
