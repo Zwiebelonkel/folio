@@ -4,7 +4,7 @@ export default function Imprint() {
   return (
     <>
       <Header />
-      <main className="container mx-auto px-4 py-16 sm:py-24">
+      <main className="container mx-auto px-4 py-8 sm:py-16">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl font-bold font-headline mb-8">Imprint</h1>
           <div className="space-y-6 text-muted-foreground prose prose-invert">

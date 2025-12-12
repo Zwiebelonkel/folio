@@ -1,4 +1,3 @@
-import { Header } from '@/components/layout/header';
 import { MusicPlayerProvider } from '@/components/contexts/music-player-context';
 import { PortfolioView } from '@/components/portfolio/portfolio-view';
 import { MusicPlayer } from '@/components/player/music-player';
@@ -7,6 +6,7 @@ import { Hero } from '@/components/layout/hero';
 import { Skills } from '@/components/skills';
 import { Separator } from '@/components/ui/separator';
 import { Footer } from '@/components/layout/footer';
+import { Header } from '@/components/layout/header';
 
 export default function Home() {
   return (
