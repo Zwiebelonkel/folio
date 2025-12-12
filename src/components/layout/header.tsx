@@ -18,19 +18,21 @@ export function Header() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <div onClick={scrollToTop} className="flex items-center gap-3 cursor-pointer">
-            <Image 
-              src="/images/LM_nobg.png" 
-              alt="LM Logo"
-              width={32} 
-              height={32} 
-              className="h-8 w-8"
-            />
-            <h1 className="text-2xl font-bold tracking-tight text-foreground font-headline">
-              Luca Müller
-            </h1>
+          <div className="flex items-center gap-4">
+            <SidebarTrigger />
+            <div onClick={scrollToTop} className="flex items-center gap-3 cursor-pointer">
+              <Image 
+                src="/images/LM_nobg.png" 
+                alt="LM Logo"
+                width={32} 
+                height={32} 
+                className="h-8 w-8"
+              />
+              <h1 className="text-2xl font-bold tracking-tight text-foreground font-headline">
+                Luca Müller
+              </h1>
+            </div>
           </div>
-          <SidebarTrigger />
         </div>
       </div>
     </header>
