@@ -1,7 +1,7 @@
 
 "use client";
 
-import { Sidebar, SidebarContent, SidebarHeader, SidebarInset, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { Sidebar, SidebarContent, SidebarHeader, SidebarInset, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarProvider } from "@/components/ui/sidebar";
 import { Home, Mail } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -11,7 +11,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <SidebarProvider>
         <Sidebar>
             <SidebarHeader>
-                <SidebarTrigger/>
             </SidebarHeader>
             <SidebarContent className="pt-16">
                 <SidebarMenu>
