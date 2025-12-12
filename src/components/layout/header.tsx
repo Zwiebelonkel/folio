@@ -16,12 +16,10 @@ export function Header() {
     <header 
       className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm dark:bg-black/80"
     >
-      <div className="container mx-auto">
-        <div className="flex h-16 items-center justify-start">
-          <div className="p-4">
-            <SidebarTrigger />
-          </div>
-          <div onClick={scrollToTop} className="flex items-center gap-3 cursor-pointer pl-4">
+      <div className="flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-4">
+          <SidebarTrigger />
+          <div onClick={scrollToTop} className="flex items-center gap-3 cursor-pointer">
             <Image 
               src="/images/LM_nobg.png" 
               alt="LM Logo"
