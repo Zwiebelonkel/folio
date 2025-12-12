@@ -9,20 +9,18 @@ export default function Imprint() {
           <h1 className="text-4xl font-bold font-headline mb-8">Imprint</h1>
           <div className="space-y-6 text-muted-foreground prose prose-invert">
             <p>
-              Luca Müller
+              Jan-Luca Müller
               <br />
-              Musterstraße 123
+              Pürschweg 22
               <br />
-              12345 Musterstadt
+              28779 Bremen
               <br />
               Germany
             </p>
 
             <h2 className="text-2xl font-bold font-headline text-foreground pt-4">Contact</h2>
             <p>
-              Email: contact@example.com
-              <br />
-              Phone: +49 123 4567890
+              Email: lucamuller2004@gmail.com
             </p>
 
             <h2 className="text-2xl font-bold font-headline text-foreground pt-4">Disclaimer</h2>
