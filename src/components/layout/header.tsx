@@ -30,7 +30,7 @@ export function Header() {
               Luca Müller
             </h1>
           </div>
-          <SidebarTrigger className="md:hidden"/>
+          <SidebarTrigger />
         </div>
       </div>
     </header>
