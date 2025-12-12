@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Sidebar, SidebarContent, SidebarHeader, SidebarInset, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
@@ -12,7 +13,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
             <SidebarHeader>
                 <SidebarTrigger/>
             </SidebarHeader>
-            <SidebarContent>
+            <SidebarContent className="pt-16">
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <Link href="/" passHref>
