@@ -6,6 +6,7 @@ import { portfolioItems, skillsData } from '@/lib/data';
 import { Hero } from '@/components/layout/hero';
 import { Skills } from '@/components/skills';
 import { Separator } from '@/components/ui/separator';
+import { Footer } from '@/components/layout/footer';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
           <Separator className="my-12" />
           <PortfolioView items={portfolioItems} />
         </main>
+        <Footer />
         <MusicPlayer />
       </div>
     </MusicPlayerProvider>
