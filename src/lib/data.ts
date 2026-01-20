@@ -42,6 +42,16 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://carbroki.web.app/',
     tags: ['Angular', 'TursoDB', 'Render', 'Gemini', 'AI'],
   },
+  {
+    id: 'w4',
+    title: 'Werkstatt',
+    description: 'A website for my favorite mechanic',
+    category: ['website'],
+    imageUrl: '/images/werkstatt.png',
+    imageHint: 'Werkstatt',
+    url: 'https://antondemo.web.app/',
+    tags: ['React', 'Tailwind', 'Render', 'Google API', 'Calender'],
+  },
 
   // Games
   {
