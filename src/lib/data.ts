@@ -287,7 +287,7 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://www.linkedin.com/in/luca-m%C3%BCller-a182ab323/',
   },
   {
-    id: 'l6',
+    id: 'l7',
     title: 'Steam Dev-Account',
     description: 'See Steam-Developer profile here',
     category: ['link'],
