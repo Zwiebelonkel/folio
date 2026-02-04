@@ -52,7 +52,16 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://antondemo.web.app/',
     tags: ['React', 'Tailwind', 'Render', 'Google API', 'Calender'],
   },
-
+  {
+    id: 'w5',
+    title: 'Fisherman Companion',
+    description: 'Companion-App for Last Fisherman',
+    category: ['website'],
+    imageUrl: '/images/companion.png',
+    imageHint: 'Werkstatt',
+    url: 'https://last-fisherman.web.app/',
+    tags: ['React', 'Tailwind', 'Piskel', 'Last Fisherman'],
+  },
   // Games
   {
     id: 'g1',
@@ -121,7 +130,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: ['game'],
     imageUrl: '/images/fishing.png',
     imageHint: 'Last Fisherman',
-    url: 'https://zwiebelonkel.itch.io/last-fisherman',
+    url: 'https://store.steampowered.com/app/4262030/Last_Fisherman/',
     tags: ['Godot', 'Blender', 'FL Studio'],
   },
   {
@@ -277,7 +286,15 @@ export const portfolioItems: PortfolioItem[] = [
     imageHint: 'LinkedIn',
     url: 'https://www.linkedin.com/in/luca-m%C3%BCller-a182ab323/',
   },
-
+  {
+    id: 'l6',
+    title: 'Steam Dev-Account',
+    description: 'See Steam-Developer profile here',
+    category: ['link'],
+    imageUrl: '/images/steam.jpg',
+    imageHint: 'Steam',
+    url: '  https://store.steampowered.com/search/?developer=ZwiebelGames',
+  },
   {
     id: 'v1',
     title: 'Motor',
