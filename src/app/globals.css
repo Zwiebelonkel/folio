@@ -110,4 +110,20 @@ body {
     pointer-events: none;
     z-index: 1;
   }
+
+  .luxury-glow {
+    box-shadow: 0 0 20px rgba(234, 179, 8, 0.2);
+    animation: luxury-pulse 4s infinite alternate ease-in-out;
+  }
+
+  @keyframes luxury-pulse {
+    0% {
+      box-shadow: 0 0 20px rgba(234, 179, 8, 0.1);
+      border-color: rgba(234, 179, 8, 0.2);
+    }
+    100% {
+      box-shadow: 0 0 40px rgba(234, 179, 8, 0.4);
+      border-color: rgba(234, 179, 8, 0.6);
+    }
+  }
 }

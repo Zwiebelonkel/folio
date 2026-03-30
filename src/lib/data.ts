@@ -34,6 +34,16 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 'w3',
+    title: 'Mouse Milker',
+    description: 'An idle Webgame about milking a mouse',
+    category: ['website', 'game'],
+    imageUrl: '/images/mouse.png',
+    imageHint: 'Mouse Milker',
+    url: 'https://mouse-milker.web.app/',
+    tags: ['React', 'Next.js', 'Tailwind', 'ElevenLabs'],
+  },
+  {
+    id: 'w4',
     title: 'CAR BRO',
     description: 'A website for identifiying cars. Just upload a picture and see all important stats about your car.',
     category: ['website'],
@@ -43,7 +53,7 @@ export const portfolioItems: PortfolioItem[] = [
     tags: ['Angular', 'TursoDB', 'Render', 'Gemini', 'AI'],
   },
   {
-    id: 'w4',
+    id: 'w5',
     title: 'Werkstatt',
     description: 'A website for my favorite mechanic',
     category: ['website'],
@@ -53,7 +63,7 @@ export const portfolioItems: PortfolioItem[] = [
     tags: ['React', 'Tailwind', 'Render', 'Google API', 'Calender'],
   },
   {
-    id: 'w5',
+    id: 'w6',
     title: 'Fisherman Companion',
     description: 'Companion-App for Last Fisherman',
     category: ['website'],
@@ -61,6 +71,16 @@ export const portfolioItems: PortfolioItem[] = [
     imageHint: 'Werkstatt',
     url: 'https://last-fisherman.web.app/',
     tags: ['React', 'Tailwind', 'Piskel', 'Last Fisherman'],
+  },
+  {
+    id: 'w7',
+    title: 'Salary Live',
+    description: 'Money Flow App',
+    category: ['website'],
+    imageUrl: '/images/salary.png',
+    imageHint: 'Money Flow',
+    url: 'https://zwiebelonkel.github.io/SalaryLive/',
+    tags: ['HTML', 'CSS', 'JS'],
   },
   // Games
   {

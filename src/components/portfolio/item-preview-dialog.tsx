@@ -29,9 +29,10 @@ interface ItemPreviewDialogProps {
   item: PortfolioItem | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onTagClick: (tag: string) => void;
 }
 
-export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialogProps) {
+export function ItemPreviewDialog({ item, open, onOpenChange, onTagClick }: ItemPreviewDialogProps) {
   if (!item) return null;
 
   const is3d = item.category.includes('3d') && !!item.url;
@@ -66,7 +67,9 @@ export function ItemPreviewDialog({ item, open, onOpenChange }: ItemPreviewDialo
                     <Separator className="my-4" />
                     <div className="flex flex-wrap gap-2">
                       {item.tags.map(tag => (
-                        <Badge key={tag} variant="secondary">{tag}</Badge>
+                        <button key={tag} onClick={() => onTagClick(tag)} className="focus:outline-none">
+                          <Badge variant="secondary" className="hover:bg-primary/20 cursor-pointer">{tag}</Badge>
+                        </button>
                       ))}
                     </div>
                   </>

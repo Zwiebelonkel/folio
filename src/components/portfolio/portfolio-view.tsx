@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { PortfolioCard } from './portfolio-card';
 import { ItemPreviewDialog } from './item-preview-dialog';
 import { useMusicPlayer } from '@/components/contexts/music-player-context';
-import { LayoutGrid, Gamepad2, Globe, Box, Music, Link as LinkIcon, Video, Search } from 'lucide-react';
+import { LayoutGrid, Gamepad2, Globe, Box, Music, Link as LinkIcon, Video, Search, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 
 const categories: { name: string; value: Category | 'all'; icon: React.ElementType }[] = [
@@ -24,6 +24,7 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
   const [activeFilter, setActiveFilter] = useState<Category | 'all'>('all');
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeTag, setActiveTag] = useState<string | null>(null);
   const { playTrack, currentTrack, isPlaying, togglePlayPause } = useMusicPlayer();
 
   const filteredItems = items.filter(item => {
@@ -32,7 +33,8 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
                           item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           item.tags?.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-    return matchesCategory && matchesSearch;
+    const matchesTag = !activeTag || (item.tags && item.tags.includes(activeTag));
+    return matchesCategory && matchesSearch && matchesTag;
   });
 
   const handleCardClick = (item: PortfolioItem) => {
@@ -63,6 +65,17 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
     }
   };
 
+  const handleTagClick = (tag: string) => {
+    setActiveTag(tag);
+    setSelectedItem(null); // Close the dialog
+    setActiveFilter('all'); // Reset category filter
+    setSearchTerm(''); // Reset search term
+  };
+
+  const clearTagFilter = () => {
+    setActiveTag(null);
+  };
+
   return (
     <>
       <div className="mb-8 space-y-4">
@@ -71,7 +84,10 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
             <Button
               key={value}
               variant={activeFilter === value ? 'default' : 'outline'}
-              onClick={() => setActiveFilter(value)}
+              onClick={() => {
+                setActiveFilter(value);
+                clearTagFilter();
+              }}
               className="capitalize gap-2"
             >
               <Icon className="h-4 w-4" />
@@ -86,9 +102,20 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
             placeholder="Search projects..."
             className="pl-10"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              clearTagFilter();
+            }}
           />
         </div>
+        {activeTag && (
+          <div className="flex justify-center">
+            <Button variant="secondary" onClick={clearTagFilter}>
+              Filtering by: {activeTag}
+              <X className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        )}
       </div>
 
       <div 
@@ -110,6 +137,7 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
         item={selectedItem}
         open={!!selectedItem}
         onOpenChange={(isOpen) => !isOpen && setSelectedItem(null)}
+        onTagClick={handleTagClick}
       />
     </>
   );
