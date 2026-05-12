@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { ExternalLink, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
+import { TypewriterText } from '@/components/ui/typewriter-text';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -55,7 +56,9 @@ export function MagnumOpus({ item }: MagnumOpusProps) {
         <div className="flex items-center gap-3 mb-8 sm:mb-10 justify-center">
           <div className="h-[1px] w-8 sm:w-12 bg-primary/30" />
           <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 text-primary animate-pulse" />
-          <h2 className="text-xs sm:text-sm font-bold tracking-[0.2em] sm:tracking-[0.3em] uppercase text-primary/80">Magnum Opus</h2>
+          <h2 className="text-xs sm:text-sm font-bold tracking-[0.2em] sm:tracking-[0.3em] uppercase text-primary/80">
+            <TypewriterText text="Magnum Opus" />
+          </h2>
           <div className="h-[1px] w-8 sm:w-12 bg-primary/30" />
         </div>
 
@@ -88,11 +91,11 @@ export function MagnumOpus({ item }: MagnumOpusProps) {
 
                 <div>
                   <h3 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-headline mb-4 sm:mb-6 group-hover:text-primary transition-colors duration-500 leading-tight">
-                    {item.title}
+                    <TypewriterText text={item.title} />
                   </h3>
-                  <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl font-light">
-                    {item.description}
-                  </p>
+                  <div className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl font-light">
+                    <TypewriterText text={item.description} />
+                  </div>
                 </div>
 
                 <div className="flex flex-wrap gap-2">

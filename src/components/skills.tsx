@@ -17,6 +17,7 @@ import {
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { TypewriterText } from '@/components/ui/typewriter-text';
 
 interface SkillsProps {
   skills: Skill[];
@@ -44,7 +45,9 @@ export function Skills({ skills }: SkillsProps) {
             <AccordionItem value="item-1" className="border-b-0">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <CardHeader className="p-0 flex-1">
-                  <CardTitle className="text-xl font-bold text-center font-headline tracking-tight">Technical Proficiency</CardTitle>
+                  <CardTitle className="text-xl font-bold text-center font-headline tracking-tight">
+                    <TypewriterText text="Technical Proficiency" />
+                  </CardTitle>
                 </CardHeader>
               </AccordionTrigger>
               <AccordionContent>

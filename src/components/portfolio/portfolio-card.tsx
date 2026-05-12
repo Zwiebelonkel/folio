@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Eye, Link as LinkIcon, Play, Pause, Video, Music } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { TypewriterText } from '@/components/ui/typewriter-text';
 import gsap from 'gsap';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
@@ -113,11 +114,11 @@ export function PortfolioCard({ item, onCardClick, onActionClick, isPlaying = fa
       <CardContent className="p-5 flex-1 flex flex-col justify-between relative z-10">
         <div>
           <h3 className="text-lg font-bold font-headline group-hover:text-primary transition-colors line-tight">
-            {item.title}
+            <TypewriterText text={item.title} />
           </h3>
-          <p className="text-xs text-muted-foreground mt-2 line-clamp-2 font-light">
-            {item.description}
-          </p>
+          <div className="text-xs text-muted-foreground mt-2 line-clamp-2 font-light">
+            <TypewriterText text={item.description} />
+          </div>
         </div>
         <Button 
           onClick={handleActionClick} 

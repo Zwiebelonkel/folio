@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
@@ -9,6 +8,7 @@ import { ItemPreviewDialog } from './item-preview-dialog';
 import { useMusicPlayer } from '@/components/contexts/music-player-context';
 import { LayoutGrid, Gamepad2, Globe, Box, Music, Link as LinkIcon, Video, Search, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { TypewriterText } from '@/components/ui/typewriter-text';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -43,7 +43,6 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
   });
 
   useEffect(() => {
-    // Refresh animations when filter changes
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray('.gsap-card');
       cards.forEach((card: any) => {
@@ -107,6 +106,15 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
 
   return (
     <>
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold font-headline mb-4">
+          <TypewriterText text="Portfolio Collection" />
+        </h2>
+        <p className="text-muted-foreground">
+          <TypewriterText text="Explore a variety of games, websites, and creative digital works." />
+        </p>
+      </div>
+
       <div className="mb-12 space-y-6">
         <div className="flex flex-wrap items-center justify-center gap-3">
           {categories.map(({ name, value, icon: Icon }) => (
