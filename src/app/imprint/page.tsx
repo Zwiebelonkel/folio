@@ -1,11 +1,14 @@
 import { Header } from '@/components/layout/header';
+import { GridBackground } from '@/components/layout/grid-background';
+import { Footer } from '@/components/layout/footer';
 
 export default function Imprint() {
   return (
     <>
+      <GridBackground />
       <Header />
-      <main className="container mx-auto px-4 py-8 sm:py-16">
-        <div className="max-w-3xl mx-auto">
+      <main className="container mx-auto px-4 py-8 sm:py-16 min-h-screen">
+        <div className="max-w-3xl mx-auto bg-background/40 backdrop-blur-md p-8 rounded-3xl border border-white/10">
           <h1 className="text-4xl font-bold font-headline mb-8">Imprint</h1>
           <div className="space-y-6 text-muted-foreground prose prose-invert">
             <p>
@@ -34,6 +37,7 @@ export default function Imprint() {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useRef } from 'react';
@@ -23,26 +22,34 @@ export function GridBackground() {
       ref={containerRef}
       className="fixed inset-0 -z-50 pointer-events-none overflow-hidden"
     >
-      {/* Grid pattern */}
+      {/* Base Grid - Dark Lines */}
       <div 
-        className="absolute inset-0 opacity-[0.08]"
+        className="absolute inset-0 opacity-10"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(255,255,255,1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,1) 1px, transparent 1px)
+            linear-gradient(to right, white 1px, transparent 1px),
+            linear-gradient(to bottom, white 1px, transparent 1px)
           `,
           backgroundSize: '50px 50px',
         }}
       />
-      {/* Glow effect */}
+      
+      {/* Glowing Grid Lines - Only lines glow near cursor */}
       <div 
-        className="absolute inset-0 transition-opacity duration-300"
+        className="absolute inset-0"
         style={{
-          background: `radial-gradient(600px circle at var(--x, 0px) var(--y, 0px), rgba(234, 179, 8, 0.12), transparent 80%)`,
+          backgroundImage: `
+            linear-gradient(to right, hsl(var(--primary)) 1px, transparent 1px),
+            linear-gradient(to bottom, hsl(var(--primary)) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+          maskImage: `radial-gradient(250px circle at var(--x, 50%) var(--y, 50%), black 0%, transparent 100%)`,
+          WebkitMaskImage: `radial-gradient(250px circle at var(--x, 50%) var(--y, 50%), black 0%, transparent 100%)`,
         }}
       />
-      {/* Dark vignette to focus content */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
+      
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
     </div>
   );
 }
