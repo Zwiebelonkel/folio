@@ -103,19 +103,19 @@ export function Hero() {
         </div>
       </div>
       
-      {/* Title with Mask for Reveal */}
-      <div className="overflow-hidden mb-4">
-        <h2 ref={titleRef} className="text-5xl font-bold tracking-tight text-foreground sm:text-7xl md:text-8xl font-headline leading-[1.05] max-w-full">
+      {/* Title with Mask for Reveal - Added padding-bottom to prevent character clipping during skew */}
+      <div className="overflow-hidden mb-4 pb-4">
+        <h2 ref={titleRef} className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-8xl font-headline leading-[1.1] max-w-full break-words px-2">
           Creative <span className="text-primary italic inline-block relative">
             Developer
-            <span className="absolute bottom-0 left-0 w-full h-[2px] bg-primary/30 animate-pulse" />
+            <span className="absolute bottom-1 left-0 w-full h-[2px] bg-primary/30 animate-pulse" />
           </span> <br /> & Digital Artist
         </h2>
       </div>
       
       {/* Description */}
       <div className="overflow-hidden">
-        <p ref={pRef} className="mt-8 max-w-2xl mx-auto text-lg sm:text-2xl text-muted-foreground font-light leading-relaxed">
+        <p ref={pRef} className="mt-8 max-w-2xl mx-auto text-lg sm:text-2xl text-muted-foreground font-light leading-relaxed px-4">
           Crafting <span className="text-foreground font-medium bg-primary/10 px-2 py-1 rounded-md">unique digital experiences</span> through code, 3D, and sound.
         </p>
       </div>
