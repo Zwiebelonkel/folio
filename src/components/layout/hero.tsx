@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef } from 'react';
@@ -74,10 +75,35 @@ export function Hero() {
     return () => ctx.revert();
   }, []);
 
+  const handleFlip = () => {
+    if (!imgRef.current) return;
+    
+    // Play the flip sound effect logic could go here
+    
+    gsap.to(imgRef.current, {
+      rotationY: "+=360",
+      scale: 1.15,
+      duration: 0.8,
+      ease: "back.out(1.7)",
+      onComplete: () => {
+        gsap.to(imgRef.current, { 
+          scale: 1, 
+          duration: 0.4,
+          ease: "power2.out"
+        });
+      }
+    });
+  };
+
   return (
     <section ref={containerRef} className="relative py-12 sm:py-24 text-center flex flex-col items-center overflow-hidden w-full px-4">
-      {/* Avatar Container with Shine */}
-      <div ref={imgRef} className="relative mb-10 p-1 group">
+      {/* Avatar Container with Shine and Flip */}
+      <div 
+        ref={imgRef} 
+        onClick={handleFlip}
+        className="relative mb-10 p-1 group cursor-pointer active:scale-95 transition-transform duration-100"
+        style={{ perspective: '1000px', transformStyle: 'preserve-3d' }}
+      >
         <div className="relative rounded-full p-2 overflow-hidden luxury-glow border border-primary/20 bg-background/50 backdrop-blur-sm">
           {/* Shine effect overlay */}
           <div 
@@ -92,7 +118,7 @@ export function Hero() {
             alt="Luca Müller"
             width={160}
             height={160}
-            className="rounded-full border-2 border-primary/30 shadow-2xl sm:w-[200px] sm:h-[200px] object-cover"
+            className="rounded-full border-2 border-primary/30 shadow-2xl sm:w-[200px] sm:h-[200px] object-cover pointer-events-none"
             priority
           />
         </div>
@@ -114,8 +140,6 @@ export function Hero() {
           Crafting <span className="text-foreground font-medium bg-primary/10 px-2 py-1 rounded-md">unique digital experiences</span> through code, 3D, and sound.
         </p>
       </div>
-
-      {/* Subtle indicator scroll down removed for cleaner look or could be added back if needed */}
     </section>
   );
 }
