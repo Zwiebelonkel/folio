@@ -75,34 +75,13 @@ export function Hero() {
     return () => ctx.revert();
   }, []);
 
-  const handleFlip = () => {
-    if (!imgRef.current) return;
-    
-    // Play the flip sound effect logic could go here
-    
-    gsap.to(imgRef.current, {
-      rotationY: "+=360",
-      scale: 1.15,
-      duration: 0.8,
-      ease: "back.out(1.7)",
-      onComplete: () => {
-        gsap.to(imgRef.current, { 
-          scale: 1, 
-          duration: 0.4,
-          ease: "power2.out"
-        });
-      }
-    });
-  };
-
   return (
     <section ref={containerRef} className="relative py-12 sm:py-24 text-center flex flex-col items-center overflow-hidden w-full px-4">
-      {/* Avatar Container with Shine and Flip */}
+      {/* Avatar Container with Shine */}
       <div 
         ref={imgRef} 
-        onClick={handleFlip}
-        className="relative mb-10 p-1 group cursor-pointer active:scale-95 transition-transform duration-100"
-        style={{ perspective: '1000px', transformStyle: 'preserve-3d' }}
+        className="relative mb-10 p-1 group"
+        style={{ perspective: '1000px' }}
       >
         <div className="relative rounded-full p-2 overflow-hidden luxury-glow border border-primary/20 bg-background/50 backdrop-blur-sm">
           {/* Shine effect overlay */}
