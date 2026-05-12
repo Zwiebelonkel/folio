@@ -1,4 +1,3 @@
-
 "use client";
 
 import type { Skill } from '@/lib/types';
@@ -39,49 +38,49 @@ export function Skills({ skills }: SkillsProps) {
   }));
 
   return (
-    <section className="py-12 sm:py-16">
-       <Card className="max-w-4xl mx-auto">
-         <Accordion type="single" collapsible defaultValue="item-1">
+    <section className="py-8 sm:py-10">
+       <Card className="max-w-2xl mx-auto liquid-glass border-white/5">
+         <Accordion type="single" collapsible>
             <AccordionItem value="item-1" className="border-b-0">
-              <AccordionTrigger className="p-6 hover:no-underline">
+              <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <CardHeader className="p-0 flex-1">
-                  <CardTitle className="text-3xl font-bold text-center font-headline">My Skills</CardTitle>
+                  <CardTitle className="text-xl font-bold text-center font-headline tracking-tight">Technical Proficiency</CardTitle>
                 </CardHeader>
               </AccordionTrigger>
               <AccordionContent>
-                <CardContent className="p-6 pt-0">
+                <CardContent className="px-6 pb-6 pt-0">
                   <Tabs defaultValue="bar" className="w-full">
-                    <div className="flex justify-center">
-                      <TabsList>
-                        <TabsTrigger value="radar">Radar</TabsTrigger>
-                        <TabsTrigger value="bar">Bar</TabsTrigger>
+                    <div className="flex justify-center mb-4">
+                      <TabsList className="bg-background/50 h-8">
+                        <TabsTrigger value="radar" className="text-xs px-4 h-6">Radar</TabsTrigger>
+                        <TabsTrigger value="bar" className="text-xs px-4 h-6">Bar</TabsTrigger>
                       </TabsList>
                     </div>
-                    <div className="mt-4 mx-auto w-full">
-                      <TabsContent value="radar" className="h-full">
-                        <div className="h-[300px]">
+                    <div className="mx-auto w-full">
+                      <TabsContent value="radar" className="h-full mt-0">
+                        <div className="h-[220px]">
                           <ChartContainer
                             config={chartConfig}
-                            className="w-full h-full"
+                            className="w-full h-full aspect-auto"
                           >
                             <ResponsiveContainer>
                               <RadarChart 
                                 data={chartData}
                                 margin={{
-                                  top: 20,
-                                  right: 20,
-                                  bottom: 20,
-                                  left: 20,
+                                  top: 10,
+                                  right: 10,
+                                  bottom: 10,
+                                  left: 10,
                                 }}
                               >
                                 <ChartTooltip
                                   cursor={false}
                                   content={<ChartTooltipContent indicator="dot" />}
                                 />
-                                <PolarGrid />
+                                <PolarGrid strokeOpacity={0.1} />
                                 <PolarAngleAxis 
                                   dataKey="subject" 
-                                  tick={{ fill: 'hsl(var(--foreground))', fontSize: 14 }} 
+                                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 11 }} 
                                 />
                                 <PolarRadiusAxis 
                                   angle={90} 
@@ -94,21 +93,21 @@ export function Skills({ skills }: SkillsProps) {
                                   dataKey="level" 
                                   stroke="hsl(var(--primary))" 
                                   fill="hsl(var(--primary))" 
-                                  fillOpacity={0.6} 
+                                  fillOpacity={0.5} 
                                 />
                               </RadarChart>
                             </ResponsiveContainer>
                           </ChartContainer>
                         </div>
                       </TabsContent>
-                      <TabsContent value="bar" className="h-full">
-                        <div className="h-[300px]">
+                      <TabsContent value="bar" className="h-full mt-0">
+                        <div className="h-[220px]">
                            <ChartContainer
-                            config={chartConfig}
-                             className="w-full h-full"
+                             config={chartConfig}
+                             className="w-full h-full aspect-auto"
                            >
                               <ResponsiveContainer>
-                                <BarChart data={chartData} layout="vertical" margin={{ left: 10, right: 40 }}>
+                                <BarChart data={chartData} layout="vertical" margin={{ left: 5, right: 30, top: 0, bottom: 0 }}>
                                   <ChartTooltip
                                     cursor={false}
                                     content={<ChartTooltipContent indicator="dot" />}
@@ -119,10 +118,10 @@ export function Skills({ skills }: SkillsProps) {
                                     type="category" 
                                     tickLine={false} 
                                     axisLine={false} 
-                                    tick={{ fill: 'hsl(var(--foreground))', fontSize: 14 }}
-                                    width={80}
+                                    tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 11 }}
+                                    width={70}
                                   />
-                                  <Bar dataKey="level" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} />
+                                  <Bar dataKey="level" fill="hsl(var(--primary))" radius={[0, 2, 2, 0]} barSize={12} />
                                 </BarChart>
                               </ResponsiveContainer>
                             </ChartContainer>
