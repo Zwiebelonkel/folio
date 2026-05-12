@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 export function GridBackground() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -12,6 +14,15 @@ export function GridBackground() {
         containerRef.current.style.setProperty('--y', `${e.clientY}px`);
       }
     };
+
+    // Breathing pulse for grid
+    gsap.to(gridRef.current, {
+      opacity: 0.1,
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
@@ -24,6 +35,7 @@ export function GridBackground() {
     >
       {/* Base Grid Layer */}
       <div 
+        ref={gridRef}
         className="absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage: `
