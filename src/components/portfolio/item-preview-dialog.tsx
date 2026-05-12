@@ -1,6 +1,6 @@
-
 "use client";
 
+import { useEffect, useRef } from 'react';
 import type { PortfolioItem } from '@/lib/types';
 import Image from 'next/image';
 import {
@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button';
 import { Link as LinkIcon, Music } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Separator } from '../ui/separator';
+import gsap from 'gsap';
 
 // Add this for model-viewer custom element
 declare global {
@@ -33,6 +34,24 @@ interface ItemPreviewDialogProps {
 }
 
 export function ItemPreviewDialog({ item, open, onOpenChange, onTagClick }: ItemPreviewDialogProps) {
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (open && contentRef.current) {
+      gsap.fromTo(contentRef.current,
+        { opacity: 0, scale: 0.95, y: 20 },
+        { 
+          opacity: 1, 
+          scale: 1, 
+          y: 0, 
+          duration: 0.4, 
+          ease: "power2.out",
+          clearProps: "all"
+        }
+      );
+    }
+  }, [open, item]);
+
   if (!item) return null;
 
   const is3d = item.category.includes('3d') && !!item.url;
@@ -48,8 +67,8 @@ export function ItemPreviewDialog({ item, open, onOpenChange, onTagClick }: Item
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-4xl p-0 overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-2 max-h-[80vh]">
+      <DialogContent className="sm:max-w-4xl p-0 overflow-hidden border-white/10">
+        <div ref={contentRef} className="grid grid-cols-1 md:grid-cols-2 max-h-[80vh]">
           <div className="p-6 flex flex-col overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="text-2xl font-bold font-headline">{item.title}</DialogTitle>
@@ -64,7 +83,7 @@ export function ItemPreviewDialog({ item, open, onOpenChange, onTagClick }: Item
                 </div>
                 {item.tags && item.tags.length > 0 && (
                   <>
-                    <Separator className="my-4" />
+                    <Separator className="my-4 opacity-50" />
                     <div className="flex flex-wrap gap-2">
                       {item.tags.map(tag => (
                         <button key={tag} onClick={() => onTagClick(tag)} className="focus:outline-none">
@@ -77,7 +96,7 @@ export function ItemPreviewDialog({ item, open, onOpenChange, onTagClick }: Item
               </div>
               {isExternalLink && (
                 <div className="mt-6">
-                  <Button asChild>
+                  <Button asChild className="w-full sm:w-auto">
                     <a href={item.url} target="_blank" rel="noopener noreferrer">
                       {isMusic ? <Music className="mr-2 h-4 w-4" /> : <LinkIcon className="mr-2 h-4 w-4" />}
                       {getLinkText()}

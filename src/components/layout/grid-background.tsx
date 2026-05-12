@@ -20,11 +20,11 @@ export function GridBackground() {
   return (
     <div 
       ref={containerRef}
-      className="fixed inset-0 -z-50 pointer-events-none overflow-hidden"
+      className="fixed inset-0 -z-50 pointer-events-none overflow-hidden bg-background"
     >
-      {/* Base Grid - Dark Lines */}
+      {/* Base Grid - Subtle Dark Lines */}
       <div 
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage: `
             linear-gradient(to right, white 1px, transparent 1px),
@@ -48,8 +48,8 @@ export function GridBackground() {
         }}
       />
       
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+      {/* Background Gradient for Depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background/40" />
     </div>
   );
 }
