@@ -1,9 +1,11 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
 @layer base {
@@ -91,6 +93,14 @@ body {
 }
 
 @layer components {
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
   .interactive-card {
     transform-style: preserve-3d;
     will-change: transform;
@@ -125,5 +135,10 @@ body {
       box-shadow: 0 0 40px rgba(234, 179, 8, 0.4);
       border-color: rgba(234, 179, 8, 0.6);
     }
+  }
+
+  .gsap-reveal {
+    opacity: 0;
+    transform: translateY(30px);
   }
 }

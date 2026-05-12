@@ -1,14 +1,18 @@
 
 "use client";
 
+import { useEffect, useRef, useState } from 'react';
 import type { PortfolioItem, Category } from '@/lib/types';
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { PortfolioCard } from './portfolio-card';
 import { ItemPreviewDialog } from './item-preview-dialog';
 import { useMusicPlayer } from '@/components/contexts/music-player-context';
 import { LayoutGrid, Gamepad2, Globe, Box, Music, Link as LinkIcon, Video, Search, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const categories: { name: string; value: Category | 'all'; icon: React.ElementType }[] = [
   { name: 'All', value: 'all', icon: LayoutGrid },
@@ -26,6 +30,7 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const { playTrack, currentTrack, isPlaying, togglePlayPause } = useMusicPlayer();
+  const gridRef = useRef<HTMLDivElement>(null);
 
   const filteredItems = items.filter(item => {
     const matchesCategory = activeFilter === 'all' || item.category.includes(activeFilter);
@@ -36,6 +41,32 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
     const matchesTag = !activeTag || (item.tags && item.tags.includes(activeTag));
     return matchesCategory && matchesSearch && matchesTag;
   });
+
+  useEffect(() => {
+    // Refresh animations when filter changes
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray('.gsap-card');
+      cards.forEach((card: any) => {
+        gsap.fromTo(card,
+          { opacity: 0, scale: 0.9, y: 30 },
+          { 
+            opacity: 1, 
+            scale: 1, 
+            y: 0, 
+            duration: 0.8, 
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              toggleActions: "play none none none"
+            }
+          }
+        );
+      });
+    }, gridRef);
+
+    return () => ctx.revert();
+  }, [activeFilter, searchTerm, activeTag]);
 
   const handleCardClick = (item: PortfolioItem) => {
     if (item.category.includes('music')) {
@@ -52,7 +83,6 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
   };
   
   const handleItemAction = (item: PortfolioItem) => {
-    // Action click on music card should always toggle play/pause
     if (item.category.includes('music')) {
       if (currentTrack?.id === item.id) {
         togglePlayPause();
@@ -60,16 +90,15 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
         playTrack(item);
       }
     } else {
-      // For other items, the action is to open the preview dialog
       setSelectedItem(item);
     }
   };
 
   const handleTagClick = (tag: string) => {
     setActiveTag(tag);
-    setSelectedItem(null); // Close the dialog
-    setActiveFilter('all'); // Reset category filter
-    setSearchTerm(''); // Reset search term
+    setSelectedItem(null);
+    setActiveFilter('all');
+    setSearchTerm('');
   };
 
   const clearTagFilter = () => {
@@ -78,8 +107,8 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
 
   return (
     <>
-      <div className="mb-8 space-y-4">
-        <div className="flex flex-wrap items-center justify-center gap-2">
+      <div className="mb-12 space-y-6">
+        <div className="flex flex-wrap items-center justify-center gap-3">
           {categories.map(({ name, value, icon: Icon }) => (
             <Button
               key={value}
@@ -88,19 +117,19 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
                 setActiveFilter(value);
                 clearTagFilter();
               }}
-              className="capitalize gap-2"
+              className="capitalize gap-2 rounded-full px-6 transition-all duration-300 hover:scale-105"
             >
               <Icon className="h-4 w-4" />
               {name}
             </Button>
           ))}
         </div>
-        <div className="relative max-w-md mx-auto">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <div className="relative max-w-xl mx-auto">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input 
             type="search"
-            placeholder="Search projects..."
-            className="pl-10"
+            placeholder="Search projects, technologies, tags..."
+            className="pl-12 py-6 rounded-2xl liquid-glass border-white/10 focus:ring-primary/50 text-lg"
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
@@ -110,7 +139,7 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
         </div>
         {activeTag && (
           <div className="flex justify-center">
-            <Button variant="secondary" onClick={clearTagFilter}>
+            <Button variant="secondary" onClick={clearTagFilter} className="rounded-full bg-primary/20 text-primary hover:bg-primary/30">
               Filtering by: {activeTag}
               <X className="ml-2 h-4 w-4" />
             </Button>
@@ -119,17 +148,18 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
       </div>
 
       <div 
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8"
-        style={{ perspective: '2000px' }}
+        ref={gridRef}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-24"
       >
         {filteredItems.map(item => (
-          <PortfolioCard
-            key={item.id}
-            item={item}
-            onCardClick={() => handleCardClick(item)}
-            onActionClick={() => handleItemAction(item)}
-            isPlaying={item.id === currentTrack?.id && isPlaying}
-          />
+          <div key={item.id} className="gsap-card">
+            <PortfolioCard
+              item={item}
+              onCardClick={() => handleCardClick(item)}
+              onActionClick={() => handleItemAction(item)}
+              isPlaying={item.id === currentTrack?.id && isPlaying}
+            />
+          </div>
         ))}
       </div>
 
