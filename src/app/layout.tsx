@@ -3,6 +3,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { ScrollProgress } from '@/components/layout/scroll-progress';
+import { GridBackground } from '@/components/layout/grid-background';
 
 export const metadata: Metadata = {
   title: 'Luca Müller',
@@ -23,17 +24,18 @@ export default function RootLayout({
         <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCE8WV2Z4S"></script>
-        <script>
-          {`
+        <script dangerouslySetInnerHTML={{
+          __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-QCE8WV2Z4S');
-          `}
-        </script>
+          `
+        }} />
       </head>
       <body className="font-body antialiased relative">
         <ScrollProgress />
+        <GridBackground />
         <div className="pt-16">
           {children}
         </div>
