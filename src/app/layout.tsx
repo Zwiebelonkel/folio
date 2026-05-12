@@ -1,7 +1,8 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-
+import { ScrollProgress } from '@/components/layout/scroll-progress';
 
 export const metadata: Metadata = {
   title: 'Luca Müller',
@@ -31,7 +32,8 @@ export default function RootLayout({
           `}
         </script>
       </head>
-      <body className="font-body antialiased">
+      <body className="font-body antialiased relative">
+        <ScrollProgress />
         <div className="pt-16">
           {children}
         </div>
