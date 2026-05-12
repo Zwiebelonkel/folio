@@ -35,14 +35,6 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
     --background: 0 0% 8%;
@@ -64,19 +56,6 @@ body {
     --border: 0 0% 25%;
     --input: 0 0% 15%;
     --ring: 45 95% 51%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 0 0% 10%;
-    --sidebar-foreground: 0 0% 95.9%;
-    --sidebar-primary: 45 95% 51%;
-    --sidebar-primary-foreground: 0 0% 9%;
-    --sidebar-accent: 0 0% 15.9%;
-    --sidebar-accent-foreground: 0 0% 95.9%;
-    --sidebar-border: 0 0% 15.9%;
-    --sidebar-ring: 45 95% 51%;
   }
 }
 
@@ -87,58 +66,67 @@ body {
   body {
     @apply bg-background text-foreground;
   }
-  .dark .recharts-polar-grid-concentric-polygon {
-      stroke: hsl(var(--border));
-  }
 }
 
 @layer components {
   .liquid-glass {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 
+      0 8px 32px 0 rgba(0, 0, 0, 0.4),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .liquid-glass:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 12px 40px 0 rgba(0, 0, 0, 0.6),
+      inset 0 0 10px rgba(255, 255, 255, 0.1);
   }
 
   .interactive-card {
     transform-style: preserve-3d;
-    will-change: transform;
+    perspective: 1000px;
   }
-  .interactive-card:hover .shine-effect {
-    opacity: 1;
-  }
+
   .shine-effect {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 25%);
+    background: radial-gradient(
+      circle at var(--x, 50%) var(--y, 50%), 
+      rgba(255, 255, 255, 0.15) 0%, 
+      transparent 60%
+    );
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: opacity 0.3s ease;
     pointer-events: none;
-    z-index: 1;
+    z-index: 5;
+  }
+
+  .interactive-card:hover .shine-effect {
+    opacity: 1;
   }
 
   .luxury-glow {
-    box-shadow: 0 0 20px rgba(234, 179, 8, 0.2);
+    box-shadow: 0 0 30px rgba(234, 179, 8, 0.15);
     animation: luxury-pulse 4s infinite alternate ease-in-out;
   }
 
   @keyframes luxury-pulse {
     0% {
-      box-shadow: 0 0 20px rgba(234, 179, 8, 0.1);
-      border-color: rgba(234, 179, 8, 0.2);
+      box-shadow: 0 0 20px rgba(234, 179, 8, 0.05);
+      border-color: rgba(234, 179, 8, 0.1);
     }
     100% {
-      box-shadow: 0 0 40px rgba(234, 179, 8, 0.4);
-      border-color: rgba(234, 179, 8, 0.6);
+      box-shadow: 0 0 50px rgba(234, 179, 8, 0.25);
+      border-color: rgba(234, 179, 8, 0.4);
     }
-  }
-
-  .gsap-reveal {
-    opacity: 0;
-    transform: translateY(30px);
   }
 }

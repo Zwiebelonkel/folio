@@ -128,7 +128,7 @@ export function PortfolioView({ items }: { items: PortfolioItem[] }) {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input 
             type="search"
-            placeholder="Search projects, technologies, tags..."
+            placeholder="Search projects"
             className="pl-12 py-6 rounded-2xl liquid-glass border-white/10 focus:ring-primary/50 text-lg"
             value={searchTerm}
             onChange={(e) => {

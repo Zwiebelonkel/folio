@@ -22,38 +22,38 @@ export function GridBackground() {
       ref={containerRef}
       className="fixed inset-0 -z-50 pointer-events-none overflow-hidden bg-background"
     >
-      {/* Base Grid Layer - Persistent subtle lines */}
+      {/* Base Grid Layer */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage: `
             linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px',
+          backgroundSize: '40px 40px',
           backgroundPosition: 'center center',
           backgroundRepeat: 'repeat',
         }}
       />
       
-      {/* Glowing Grid Layer - Only lines glow near cursor, now more subtle */}
+      {/* Glowing Grid Lines */}
       <div 
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0 opacity-30"
         style={{
           backgroundImage: `
             linear-gradient(to right, hsl(var(--primary)) 1px, transparent 1px),
             linear-gradient(to bottom, hsl(var(--primary)) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px',
+          backgroundSize: '40px 40px',
           backgroundPosition: 'center center',
           backgroundRepeat: 'repeat',
-          maskImage: `radial-gradient(200px circle at var(--x, 50%) var(--y, 50%), black 0%, transparent 80%)`,
-          WebkitMaskImage: `radial-gradient(200px circle at var(--x, 50%) var(--y, 50%), black 0%, transparent 80%)`,
+          maskImage: `radial-gradient(150px circle at var(--x, 50%) var(--y, 50%), black 0%, transparent 80%)`,
+          WebkitMaskImage: `radial-gradient(150px circle at var(--x, 50%) var(--y, 50%), black 0%, transparent 80%)`,
         }}
       />
       
-      {/* Radial fade to edges to keep it focused and add depth */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,hsl(var(--background))_90%)] opacity-30" />
+      {/* Subtle depth gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,hsl(var(--background))_100%)] opacity-40" />
     </div>
   );
 }
