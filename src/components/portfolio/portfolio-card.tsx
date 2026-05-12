@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
@@ -49,7 +48,7 @@ export function PortfolioCard({ item, onCardClick, onActionClick, isPlaying = fa
   };
 
   const onMouseLeave = () => {
-    if (isMobile) return;
+    if (isMobile || !cardRef.current) return;
     gsap.to(cardRef.current, {
       rotateX: 0,
       rotateY: 0,
@@ -87,7 +86,7 @@ export function PortfolioCard({ item, onCardClick, onActionClick, isPlaying = fa
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       style={style as React.CSSProperties}
-      className="liquid-glass overflow-hidden flex flex-col group transition-all duration-300 ease-out shadow-lg hover:shadow-primary/20 cursor-pointer interactive-card rounded-2xl border-white/5"
+      className="liquid-glass overflow-hidden flex flex-col group transition-all duration-300 ease-out shadow-lg hover:shadow-primary/20 cursor-pointer interactive-card rounded-2xl border-white/5 w-full max-w-full"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <div className="shine-effect" />

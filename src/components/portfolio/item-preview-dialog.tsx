@@ -17,15 +17,6 @@ import { cn } from '@/lib/utils';
 import { Separator } from '../ui/separator';
 import gsap from 'gsap';
 
-// Add this for model-viewer custom element
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'model-viewer': any;
-    }
-  }
-}
-
 interface ItemPreviewDialogProps {
   item: PortfolioItem | null;
   open: boolean;
@@ -111,6 +102,7 @@ export function ItemPreviewDialog({ item, open, onOpenChange, onTagClick }: Item
             is3d ? "min-h-[400px] md:min-h-0" : "aspect-video"
           )}>
             {is3d && !isExternalLink ? (
+              /* @ts-ignore - model-viewer is a custom element */
               <model-viewer
                   src={item.url}
                   alt={item.title}
