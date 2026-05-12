@@ -29,10 +29,6 @@ export default function Home() {
           )}
 
           <Separator className="my-12" />
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold font-headline mb-4">Portfolio Collection</h2>
-            <p className="text-muted-foreground">Explore a variety of games, websites, and creative digital works.</p>
-          </div>
           <PortfolioView items={otherItems} />
         </main>
         <Footer />
