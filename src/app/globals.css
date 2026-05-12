@@ -6,6 +6,21 @@ body {
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
   width: 100%;
+  position: relative;
+}
+
+/* Grain / Noise Filter */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.04;
+  z-index: 100;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 @layer base {
@@ -70,27 +85,27 @@ body {
 
 @layer components {
   .liquid-glass {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 
       0 8px 32px 0 rgba(0, 0, 0, 0.4),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
+      inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .liquid-glass:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
     box-shadow: 
       0 12px 40px 0 rgba(0, 0, 0, 0.6),
-      inset 0 0 10px rgba(255, 255, 255, 0.1);
+      inset 0 0 10px rgba(255, 255, 255, 0.05);
   }
 
   .interactive-card {
     transform-style: preserve-3d;
-    perspective: 1000px;
+    perspective: 1200px;
   }
 
   .shine-effect {
@@ -101,11 +116,11 @@ body {
     bottom: 0;
     background: radial-gradient(
       circle at var(--x, 50%) var(--y, 50%), 
-      rgba(255, 255, 255, 0.15) 0%, 
-      transparent 60%
+      rgba(255, 255, 255, 0.12) 0%, 
+      transparent 65%
     );
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
     pointer-events: none;
     z-index: 5;
   }
@@ -115,18 +130,31 @@ body {
   }
 
   .luxury-glow {
-    box-shadow: 0 0 30px rgba(234, 179, 8, 0.15);
+    box-shadow: 0 0 30px rgba(234, 179, 8, 0.1);
     animation: luxury-pulse 4s infinite alternate ease-in-out;
   }
 
   @keyframes luxury-pulse {
     0% {
       box-shadow: 0 0 20px rgba(234, 179, 8, 0.05);
-      border-color: rgba(234, 179, 8, 0.1);
+      border-color: rgba(234, 179, 8, 0.05);
     }
     100% {
-      box-shadow: 0 0 50px rgba(234, 179, 8, 0.25);
-      border-color: rgba(234, 179, 8, 0.4);
+      box-shadow: 0 0 50px rgba(234, 179, 8, 0.2);
+      border-color: rgba(234, 179, 8, 0.3);
     }
+  }
+
+  .glass-button {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
   }
 }
