@@ -26,7 +26,6 @@ interface ItemPreviewDialogProps {
 
 export function ItemPreviewDialog({ item, open, onOpenChange, onTagClick }: ItemPreviewDialogProps) {
   const contentRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (open && contentRef.current) {
@@ -45,7 +44,7 @@ export function ItemPreviewDialog({ item, open, onOpenChange, onTagClick }: Item
           opacity: 1, 
           scale: 1, 
           y: 0, 
-          rotateX: 0,
+          rotateX: 0, 
           skewY: 0,
           duration: 0.8, 
           ease: "expo.out",
@@ -79,23 +78,24 @@ export function ItemPreviewDialog({ item, open, onOpenChange, onTagClick }: Item
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-4xl p-0 overflow-hidden border-white/10 bg-background/60 backdrop-blur-3xl">
-        <div ref={contentRef} className="grid grid-cols-1 md:grid-cols-2 max-h-[80vh]">
-          <div className="p-8 flex flex-col overflow-y-auto">
+      <DialogContent className="sm:max-w-4xl p-0 overflow-hidden border-white/10 bg-background/60 backdrop-blur-3xl max-h-[90vh]">
+        <div ref={contentRef} className="grid grid-cols-1 md:grid-cols-2 h-full overflow-hidden">
+          {/* Content Section */}
+          <div className="p-6 md:p-8 flex flex-col overflow-y-auto order-2 md:order-1">
             <DialogHeader className="preview-stagger">
-              <DialogTitle className="text-3xl font-bold font-headline leading-tight">{item.title}</DialogTitle>
-              <DialogDescription className="text-lg pt-2 text-muted-foreground/80 font-light">{item.description}</DialogDescription>
+              <DialogTitle className="text-2xl md:text-3xl font-bold font-headline leading-tight">{item.title}</DialogTitle>
+              <DialogDescription className="text-base md:text-lg pt-2 text-muted-foreground/80 font-light">{item.description}</DialogDescription>
             </DialogHeader>
             <div className="flex-1 flex flex-col justify-between">
               <div>
-                <div className="mt-6 flex flex-wrap gap-2 preview-stagger">
+                <div className="mt-4 md:mt-6 flex flex-wrap gap-2 preview-stagger">
                   {item.category.map(cat => (
                     <Badge key={cat} variant="outline" className="capitalize px-3 py-1 bg-white/5 border-white/10">{cat}</Badge>
                   ))}
                 </div>
                 {item.tags && item.tags.length > 0 && (
                   <div className="preview-stagger">
-                    <Separator className="my-6 opacity-30" />
+                    <Separator className="my-4 md:my-6 opacity-30" />
                     <div className="flex flex-wrap gap-2">
                       {item.tags.map(tag => (
                         <button key={tag} onClick={() => onTagClick(tag)} className="focus:outline-none">
@@ -107,7 +107,7 @@ export function ItemPreviewDialog({ item, open, onOpenChange, onTagClick }: Item
                 )}
               </div>
               {isExternalLink && (
-                <div className="mt-8 preview-stagger">
+                <div className="mt-6 md:mt-8 preview-stagger">
                   <Button asChild className="w-full sm:w-auto h-12 px-8 rounded-xl bg-primary text-primary-foreground hover:scale-105 transition-transform">
                     <a href={item.url} target="_blank" rel="noopener noreferrer">
                       {isMusic ? <Music className="mr-2 h-5 w-5" /> : <LinkIcon className="mr-2 h-5 w-5" />}
@@ -118,9 +118,12 @@ export function ItemPreviewDialog({ item, open, onOpenChange, onTagClick }: Item
               )}
             </div>
           </div>
+
+          {/* Image/3D Section */}
           <div className={cn(
-            "relative bg-muted/20 md:h-full",
-            is3d ? "min-h-[400px] md:min-h-0" : "aspect-video"
+            "relative bg-muted/20 order-1 md:order-2",
+            "h-[250px] sm:h-[300px] md:h-full min-h-[250px]",
+            is3d && "min-h-[300px] md:min-h-0"
           )}>
             {is3d && !isExternalLink ? (
               /* @ts-ignore - model-viewer is a custom element */
