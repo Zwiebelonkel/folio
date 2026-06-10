@@ -14,6 +14,16 @@ export const portfolioItems: PortfolioItem[] = [
   // Websites
   {
     id: 'w1',
+    title: 'Waiting for Heaven',
+    description: 'A dark psx-horror-game about a busstop.',
+    category: ['website', 'game'],
+    imageUrl: '/images/wfh.png',
+    imageHint: 'album art',
+    url: 'https://zwiebelonkel.github.io/WaitingForHeavenWebsite/',
+    tags: ['Godot','Blender','FLStudio','ElevenLabs','Steam','GSAP','Anime.js'],
+  },
+  {
+    id: 'w8',
     title: 'Outside Between',
     description: 'A social Webgame about Cards and Luck.',
     category: ['website', 'game'],
@@ -70,7 +80,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/companion.png',
     imageHint: 'Werkstatt',
     url: 'https://last-fisherman.web.app/',
-    tags: ['React', 'Tailwind', 'Piskel', 'Last Fisherman'],
+    tags: ['React', 'Tailwind', 'Piskel', 'Last Fisherman','Steam'],
   },
   {
     id: 'w7',
@@ -151,7 +161,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageUrl: '/images/fishing.png',
     imageHint: 'Last Fisherman',
     url: 'https://store.steampowered.com/app/4262030/Last_Fisherman/',
-    tags: ['Godot', 'Blender', 'FL Studio'],
+    tags: ['Godot', 'Blender', 'FL Studio','Steam','Last Fisherman'],
   },
   {
     id: 'g8',
