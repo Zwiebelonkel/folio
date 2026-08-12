@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { PortfolioCard } from './portfolio-card';
 import { ItemPreviewDialog } from './item-preview-dialog';
 import { useMusicPlayer } from '@/components/contexts/music-player-context';
-import { LayoutGrid, Gamepad2, Globe, Box, Music, Link as LinkIcon, Video, Search, X } from 'lucide-react';
+import { LayoutGrid, Gamepad2, Globe, Box, Music, Link as LinkIcon, Video, Search, X, BrainCircuit } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { TypewriterText } from '@/components/ui/typewriter-text';
 import gsap from 'gsap';
@@ -22,6 +22,7 @@ const categories: { name: string; value: Category | 'all'; icon: React.ElementTy
   { name: 'Music', value: 'music', icon: Music },
   { name: 'Videos', value: 'video', icon: Video },
   { name: 'Links', value: 'link', icon: LinkIcon },
+  { name: 'AI Experiments', value: 'ai', icon: BrainCircuit },
 ];
 
 export function PortfolioView({ items }: { items: PortfolioItem[] }) {

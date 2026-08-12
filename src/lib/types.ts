@@ -1,4 +1,4 @@
-export type Category = 'game' | 'website' | '3d' | 'music' | 'link' | 'video';
+export type Category = 'game' | 'website' | '3d' | 'music' | 'link' | 'video' | 'ai';
 
 export interface Skill {
   name: string;

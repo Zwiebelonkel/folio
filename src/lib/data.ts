@@ -92,6 +92,54 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://zwiebelonkel.github.io/SalaryLive/',
     tags: ['HTML', 'CSS', 'JS'],
   },
+
+  // AI Experiments
+  {
+    id: 'a1',
+    title: 'CardPlug',
+    description: 'An AI-powered card experiment.',
+    category: ['ai'],
+    imageUrl: '/images/cardPlug.png',
+    imageHint: 'CardPlug',
+    tags: ['AI'],
+  },
+  {
+    id: 'a2',
+    title: 'DartZone',
+    description: 'An AI-powered darts experiment.',
+    category: ['ai'],
+    imageUrl: '/images/dartzone.png',
+    imageHint: 'DartZone',
+    tags: ['AI'],
+  },
+  {
+    id: 'a3',
+    title: 'KantoTrainer',
+    description: 'An AI-powered training experiment.',
+    category: ['ai'],
+    imageUrl: '/images/kantoTrainer.png',
+    imageHint: 'KantoTrainer',
+    tags: ['AI'],
+  },
+  {
+    id: 'a4',
+    title: 'MiddleFinder',
+    description: 'An AI-powered discovery experiment.',
+    category: ['ai'],
+    imageUrl: '/images/middleFinder.png',
+    imageHint: 'MiddleFinder',
+    tags: ['AI'],
+  },
+  {
+    id: 'a5',
+    title: 'Collector',
+    description: 'An AI-powered collecting experiment.',
+    category: ['ai'],
+    imageUrl: '/images/collector.png',
+    imageHint: 'Collector',
+    tags: ['AI'],
+  },
+
   // Games
   {
     id: 'g1',
